@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dear Blake...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .letter {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: rotate(-1deg);
+        }
+        .letter-header {
+            text-align: right;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .greeting {
+            font-size: 2rem;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+        .letter p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .emphasis {
+            font-weight: bold;
+            color: #e94560;
+        }
+        .reasons {
+            background: #f8f8f8;
+            padding: 1.5rem 2rem;
+            border-left: 4px solid #e94560;
+            margin: 2rem 0;
+        }
+        .reasons h3 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+        .reasons ul {
+            list-style: none;
+        }
+        .reasons li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .reasons li::before {
+            content: "🚗";
+            position: absolute;
+            left: 0;
+        }
+        .signature {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #666;
+        }
+        .signature .name {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            font-style: normal;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        .ps {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #ccc;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .car-emoji {
+            font-size: 2rem;
+            display: inline-block;
+            animation: drive 2s infinite;
+        }
+        @keyframes drive {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(10px) rotate(5deg); }
+            75% { transform: translateX(-10px) rotate(-5deg); }
+        }
+        .title-banner {
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .title-banner h1 {
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        .boost-meter {
+            background: #333;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .boost-meter p {
+            color: white;
+            margin-bottom: 0.5rem !important;
+            font-size: 1rem !important;
+        }
+        .meter {
+            background: #555;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .meter-fill {
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            height: 100%;
+            width: 0%;
+            border-radius: 15px;
+        }
+        @media (max-width: 600px) {
+            .letter {
+                padding: 1.5rem;
+            }
+            .greeting {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="https://videos.pexels.com/video-files/857251/857251-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="title-banner">
+            <h1><span class="car-emoji">🚗</span> A Message for Blake <span class="car-emoji">🚗</span></h1>
+        </div>
+
+        <div class="letter">
+            <div class="letter-header">
+                Sent from: Not Playing Rocket League
+            </div>
+
+            <div class="greeting">Dear Blake,</div>
+
+            <p>I hope this letter finds you well. Actually, I hope this letter finds you <span class="emphasis">doing literally anything other than asking me to play Rocket League.</span></p>
+
+            <p>Look, we need to talk. Every single day, without fail, my phone lights up with the same question: "Wanna play Rocket League?" And every single day, I have to summon the strength to come up with a new excuse.</p>
+
+            <div class="reasons">
+                <h3>Excuses I've Already Used:</h3>
+                <ul>
+                    <li>My controller is broken (it wasn't)</li>
+                    <li>I'm doing homework (I wasn't)</li>
+                    <li>My internet is down (it wasn't)</li>
+                    <li>I'm eating dinner (at 3 PM)</li>
+                    <li>I have to walk my fish</li>
+                    <li>My car got repossessed... in the game</li>
+                </ul>
+            </div>
+
+            <p>Blake, I say this with as much love as I can muster: <span class="emphasis">I do not want to watch you whiff aerials for 3 hours straight.</span></p>
+
+            <p>Do you know what it's like to hear "I got it! I got it! I got it!" followed by the ball sailing directly into our own goal? I do. I've lived it. Repeatedly.</p>
+
+            <div class="boost-meter">
+                <p>My desire to play Rocket League with you:</p>
+                <div class="meter">
+                    <div class="meter-fill"></div>
+                </div>
+            </div>
+
+            <p>It's not you, it's... actually, no, it's definitely you. It's the way you spam "What a save!" when I miss. It's the way you call yourself a "Rocket League main." It's everything.</p>
+
+            <p>So please, Blake. I'm begging you. Find another teammate. Download a different game. Take up knitting. <span class="emphasis">Anything.</span></p>
+
+            <div class="signature">
+                With exhaustion and mild annoyance,
+                <div class="name">Your "Friend"</div>
+            </div>
+
+            <div class="ps">
+                <strong>P.S.</strong> If you ask me to play tomorrow, I'm blocking you.<br>
+                <strong>P.P.S.</strong> No, I don't want to "just do one game."<br>
+                <strong>P.P.P.S.</strong> What a save! What a save! What a save!
+            </div>
+        </div>
+    </div>
+</body>
+</html>
