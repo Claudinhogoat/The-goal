@@ -5,14 +5,15 @@ This file provides guidance for AI assistants working on this repository.
 ## Project Overview
 
 **Repository:** The-goal
-**Status:** New repository (under initial development)
+**Description:** A simple website project
+**Status:** Active development
 
 ## Repository Structure
 
 ```
 The-goal/
 ├── CLAUDE.md          # AI assistant guidelines (this file)
-└── (project files to be added)
+└── index.html         # Main website page
 ```
 
 ## Development Guidelines
@@ -42,17 +43,23 @@ Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
 
 ## Commands
 
-*(To be updated as the project develops)*
+```bash
+# Open website in browser (if using a local server)
+python3 -m http.server 8000
+
+# Then visit http://localhost:8000
+```
 
 ## Testing
 
-*(To be updated when testing framework is added)*
+Open `index.html` directly in a browser to test.
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
 | `CLAUDE.md` | AI assistant guidelines |
+| `index.html` | Main website page |
 
 ## Notes for AI Assistants
 
