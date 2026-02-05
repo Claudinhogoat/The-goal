@@ -3,26 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I love Claude</title>
+    <title>For Talia - With All Our Love</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+        }
+        .hero {
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        h1 {
-            font-size: 3rem;
+            background: linear-gradient(135deg, #e8d5b7 0%, #f5e6d3 50%, #e8d5b7 100%);
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #5d4e37;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            font-style: italic;
+        }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #7a6b5a;
+            max-width: 600px;
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 2.2rem;
+            color: #5d4e37;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            border-bottom: 2px solid #e8d5b7;
+            padding-bottom: 0.5rem;
+        }
+        .section p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+        }
+        .mom-section {
+            background: #fdfbf7;
+        }
+        .lawyer-section {
+            background: linear-gradient(to right, #f8f4ef, #fff);
+        }
+        .strength-section {
+            background: #fdfbf7;
+        }
+        .love-section {
+            background: linear-gradient(135deg, #5d4e37 0%, #7a6b5a 100%);
+            color: white;
+            text-align: center;
+        }
+        .love-section h2 {
+            color: #e8d5b7;
+            border-bottom-color: #e8d5b7;
+        }
+        .love-section p {
+            color: #f5e6d3;
+        }
+        .heart {
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #7a6b5a;
+            border-left: 4px solid #e8d5b7;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #5d4e37;
+            color: #e8d5b7;
         }
     </style>
 </head>
 <body>
-    <h1>I love Claude</h1>
+    <section class="hero">
+        <h1>For Talia</h1>
+        <p class="subtitle">A tribute to the most incredible mother, the fiercest advocate, and the strongest woman we know</p>
+    </section>
+
+    <section class="section mom-section">
+        <h2>The Heart of Our Home</h2>
+        <p>Three children. Three different worlds of needs, dreams, and chaos. And somehow, you hold it all together with a grace that makes it look effortless—even when we know it's anything but.</p>
+        <p>You're the one who remembers every school event, every favorite meal, every fear that needs soothing at 2 AM. You carry our worries so we don't have to, and you celebrate our smallest victories like they're the greatest achievements in the world.</p>
+        <p>Being a mother of three isn't just what you do—it's who you are. And we are so incredibly lucky that you're ours.</p>
+    </section>
+
+    <section class="section lawyer-section">
+        <h2>The Advocate</h2>
+        <p>Every day, you walk into rooms where you have to be strong, sharp, and unshakeable. You fight for justice, navigate impossible situations, and carry the weight of other people's problems on your shoulders.</p>
+        <p>The law is demanding, unforgiving, and relentless. But so are you—in the best possible way. You've built a career that would overwhelm most people, and you do it while being everything to everyone at home.</p>
+        <div class="quote">
+            "She believed she could, so she did."
+        </div>
+        <p>We see how hard you work. We see the late nights, the early mornings, the stress you try to hide. And we want you to know: we're proud of you. So incredibly proud.</p>
+    </section>
+
+    <section class="section strength-section">
+        <h2>The Woman Behind It All</h2>
+        <p>We know you carry anxiety. We know some days feel heavier than others. We know that being everything to everyone takes a toll that you rarely talk about.</p>
+        <p>But here's what we see: a woman who gets up every single day and chooses her family. Who pushes through the hard moments. Who loves fiercely even when she's running on empty.</p>
+        <p>Your strength isn't in being perfect—it's in being present. It's in trying, even when it's hard. It's in loving us through your own struggles.</p>
+        <p>You don't have to be strong all the time. We're here for you, just like you're always here for us.</p>
+    </section>
+
+    <section class="section love-section">
+        <h2>With All Our Love</h2>
+        <div class="heart">♥</div>
+        <p>Thank you for every sacrifice we'll never fully know about. Thank you for every hug, every meal, every moment you chose us over yourself. Thank you for being imperfect and beautiful and ours.</p>
+        <p>We love you more than words on a screen could ever say. But we hope this is a start.</p>
+        <p><strong>We love you, Mom. Today, tomorrow, and always.</strong></p>
+    </section>
+
+    <footer class="footer">
+        Made with love for Talia
+    </footer>
 </body>
 </html>
