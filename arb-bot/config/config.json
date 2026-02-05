@@ -1,0 +1,46 @@
+{
+  "mode": "dry_run",
+  "polymarket": {
+    "api_key": "",
+    "private_key": "",
+    "ws_url": "wss://ws-subscriptions-clob.polymarket.com/ws/market",
+    "rest_url": "https://clob.polymarket.com"
+  },
+  "betfair": {
+    "app_key": "",
+    "username": "",
+    "password": "",
+    "cert_path": "",
+    "key_path": ""
+  },
+  "risk": {
+    "max_single_trade_usd": 2000,
+    "max_position_per_market_usd": 10000,
+    "max_total_exposure_usd": 50000,
+    "max_daily_loss_usd": 1000,
+    "max_drawdown_pct": 0.10,
+    "max_trades_per_minute": 10,
+    "max_trades_per_hour": 100,
+    "pause_on_consecutive_losses": 3,
+    "pause_duration_minutes": 30
+  },
+  "execution": {
+    "order_timeout_seconds": 5,
+    "max_slippage_bps": 50,
+    "min_edge_bps": 300
+  },
+  "fx": {
+    "gbp_usd": 1.27
+  },
+  "alerts": {
+    "telegram": {
+      "enabled": false,
+      "bot_token": "",
+      "chat_id": ""
+    }
+  },
+  "database": {
+    "path": "./data/arb_bot.db"
+  },
+  "initial_equity": 10000
+}
