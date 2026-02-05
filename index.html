@@ -15,28 +15,83 @@
             line-height: 1.8;
             color: #333;
         }
-        .hero {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(93, 78, 55, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #e8d5b7;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        /* Video Hero Section */
+        .video-hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #e8d5b7 0%, #f5e6d3 50%, #e8d5b7 100%);
             text-align: center;
             padding: 2rem;
+            overflow: hidden;
         }
-        .hero h1 {
-            font-size: 3.5rem;
-            color: #5d4e37;
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(93, 78, 55, 0.6);
+            z-index: -1;
+        }
+        .video-hero h1 {
+            font-size: 4rem;
+            color: white;
             margin-bottom: 1rem;
             font-weight: normal;
             font-style: italic;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
-        .hero .subtitle {
+        .video-hero .subtitle {
             font-size: 1.5rem;
-            color: #7a6b5a;
-            max-width: 600px;
+            color: #f5e6d3;
+            max-width: 700px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
         }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        /* Sections */
         .section {
             padding: 5rem 2rem;
             max-width: 800px;
@@ -88,18 +143,73 @@
             padding-left: 1.5rem;
             margin: 2rem 0;
         }
+        /* Page Links */
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: #f5e6d3;
+            flex-wrap: wrap;
+        }
+        .page-link {
+            display: block;
+            padding: 2rem 3rem;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #5d4e37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .page-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .page-link h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .page-link p {
+            color: #7a6b5a;
+            font-size: 1rem;
+        }
         .footer {
             text-align: center;
             padding: 2rem;
             background: #5d4e37;
             color: #e8d5b7;
         }
+        @media (max-width: 600px) {
+            .video-hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <section class="hero">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="messages.html">Messages</a>
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <section class="video-hero">
+        <video class="video-background" autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/3191572/3191572-uhd_2560_1440_25fps.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
         <h1>For Talia</h1>
         <p class="subtitle">A tribute to the most incredible mother, the fiercest advocate, and the strongest woman we know</p>
+        <div class="scroll-hint">&#8595;</div>
     </section>
 
     <section class="section mom-section">
@@ -127,9 +237,20 @@
         <p>You don't have to be strong all the time. We're here for you, just like you're always here for us.</p>
     </section>
 
+    <div class="page-links">
+        <a href="messages.html" class="page-link">
+            <h3>Leave a Message</h3>
+            <p>Write something beautiful for Talia</p>
+        </a>
+        <a href="gallery.html" class="page-link">
+            <h3>Photo Gallery</h3>
+            <p>Celebrating family & happiness</p>
+        </a>
+    </div>
+
     <section class="section love-section">
         <h2>With All Our Love</h2>
-        <div class="heart">♥</div>
+        <div class="heart">&#9829;</div>
         <p>Thank you for every sacrifice we'll never fully know about. Thank you for every hug, every meal, every moment you chose us over yourself. Thank you for being imperfect and beautiful and ours.</p>
         <p>We love you more than words on a screen could ever say. But we hope this is a start.</p>
         <p><strong>We love you, Mom. Today, tomorrow, and always.</strong></p>

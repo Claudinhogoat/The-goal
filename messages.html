@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages for Talia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fdfbf7;
+            min-height: 100vh;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(93, 78, 55, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #e8d5b7;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #5d4e37;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            color: #7a6b5a;
+            font-size: 1.2rem;
+        }
+        /* Message Form */
+        .message-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+        }
+        .message-form h2 {
+            color: #5d4e37;
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            color: #5d4e37;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e8d5b7;
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #5d4e37;
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #5d4e37 0%, #7a6b5a 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-family: 'Georgia', serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(93, 78, 55, 0.3);
+        }
+        /* Messages Display */
+        .messages-section h2 {
+            color: #5d4e37;
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid #e8d5b7;
+            padding-bottom: 1rem;
+        }
+        .messages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .message-card {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            border-left: 4px solid #e8d5b7;
+        }
+        .message-card .author {
+            color: #5d4e37;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .message-card .text {
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .message-card .date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        .no-messages {
+            text-align: center;
+            color: #7a6b5a;
+            font-style: italic;
+            padding: 2rem;
+        }
+        .heart-divider {
+            text-align: center;
+            color: #e8d5b7;
+            font-size: 1.5rem;
+            margin: 2rem 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #5d4e37;
+            color: #e8d5b7;
+            margin-top: 3rem;
+        }
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="messages.html">Messages</a>
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Messages for Talia</h1>
+            <p>Share your love, appreciation, and kind words</p>
+        </div>
+
+        <div class="message-form">
+            <h2>Write a Message</h2>
+            <form id="messageForm">
+                <div class="form-group">
+                    <label for="authorName">Your Name</label>
+                    <input type="text" id="authorName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="messageText">Your Message</label>
+                    <textarea id="messageText" placeholder="Write something beautiful for Talia..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Love</button>
+            </form>
+        </div>
+
+        <div class="heart-divider">&#9829; &#9829; &#9829;</div>
+
+        <div class="messages-section">
+            <h2>Messages of Love</h2>
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        Made with love for Talia
+    </footer>
+
+    <script>
+        // Get messages from localStorage
+        function getMessages() {
+            const messages = localStorage.getItem('taliaMessages');
+            return messages ? JSON.parse(messages) : [];
+        }
+
+        // Save messages to localStorage
+        function saveMessages(messages) {
+            localStorage.setItem('taliaMessages', JSON.stringify(messages));
+        }
+
+        // Display all messages
+        function displayMessages() {
+            const container = document.getElementById('messagesContainer');
+            const messages = getMessages();
+
+            if (messages.length === 0) {
+                container.innerHTML = '<p class="no-messages">Be the first to leave a loving message for Talia!</p>';
+                return;
+            }
+
+            // Show newest first
+            const sortedMessages = messages.reverse();
+
+            container.innerHTML = sortedMessages.map(msg => `
+                <div class="message-card">
+                    <div class="author">${escapeHtml(msg.author)}</div>
+                    <div class="text">${escapeHtml(msg.text)}</div>
+                    <div class="date">${msg.date}</div>
+                </div>
+            `).join('');
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Handle form submission
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const author = document.getElementById('authorName').value.trim();
+            const text = document.getElementById('messageText').value.trim();
+
+            if (!author || !text) return;
+
+            const messages = getMessages();
+            messages.push({
+                author: author,
+                text: text,
+                date: new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })
+            });
+
+            saveMessages(messages);
+            displayMessages();
+
+            // Clear form
+            document.getElementById('authorName').value = '';
+            document.getElementById('messageText').value = '';
+
+            // Scroll to messages
+            document.querySelector('.messages-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Load messages on page load
+        displayMessages();
+    </script>
+</body>
+</html>

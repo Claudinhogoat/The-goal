@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - For Talia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fdfbf7;
+            min-height: 100vh;
+        }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(93, 78, 55, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #e8d5b7;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: #5d4e37;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .page-header p {
+            color: #7a6b5a;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Photo Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(93, 78, 55, 0.9));
+            color: white;
+            padding: 3rem 1.5rem 1.5rem;
+            font-style: italic;
+        }
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, #5d4e37 0%, #7a6b5a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.6;
+        }
+        .quote-section cite {
+            color: #e8d5b7;
+            font-size: 1rem;
+        }
+        /* Family Values */
+        .values-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        .value-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .value-card h3 {
+            color: #5d4e37;
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+        }
+        .value-card p {
+            color: #7a6b5a;
+            font-size: 1rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #5d4e37;
+            color: #e8d5b7;
+            margin-top: 3rem;
+        }
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .quote-section blockquote {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="messages.html">Messages</a>
+        <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Celebrating Family</h1>
+            <p>A collection of moments that remind us what truly matters in life - love, togetherness, and the bonds we share</p>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop" alt="Happy family together">
+                <div class="caption">Together is our favorite place</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1478071735433-5ee4be90bddb?w=600&h=400&fit=crop" alt="Family holding hands">
+                <div class="caption">Holding on to what matters</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=600&h=400&fit=crop" alt="Family cooking together">
+                <div class="caption">Love made with our own hands</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=600&h=400&fit=crop" alt="Family at sunset">
+                <div class="caption">Every sunset with you is magic</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&h=400&fit=crop" alt="Mother and children">
+                <div class="caption">A mother's love knows no bounds</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?w=600&h=400&fit=crop" alt="Family laughing">
+                <div class="caption">Laughter is our soundtrack</div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <blockquote>
+                "Family is not an important thing. It's everything."
+            </blockquote>
+            <cite>- Michael J. Fox</cite>
+        </div>
+
+        <div class="values-section">
+            <div class="value-card">
+                <div class="icon">&#9829;</div>
+                <h3>Unconditional Love</h3>
+                <p>The foundation of everything we are</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">&#10038;</div>
+                <h3>Strength</h3>
+                <p>Together we can face anything</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">&#9733;</div>
+                <h3>Joy</h3>
+                <p>Finding happiness in the little moments</p>
+            </div>
+            <div class="value-card">
+                <div class="icon">&#8734;</div>
+                <h3>Forever</h3>
+                <p>A bond that time cannot break</p>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581952976147-5a2d15560349?w=600&h=400&fit=crop" alt="Family playing">
+                <div class="caption">Play is the language of love</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=600&h=400&fit=crop" alt="Family hugging">
+                <div class="caption">Home is wherever we're together</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&h=400&fit=crop" alt="Family outdoors">
+                <div class="caption">Adventures are better together</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        Made with love for Talia
+    </footer>
+</body>
+</html>
