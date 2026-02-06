@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izzy - Friend Spotlight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(55, 78, 93, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #b7d5e8;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #4a7c9b 0%, #7eb8d4 50%, #b0daf0 100%);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            font-style: italic;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 2.2rem;
+            color: #374e5d;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            border-bottom: 2px solid #b7d5e8;
+            padding-bottom: 0.5rem;
+        }
+        .section p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+        }
+        .about-section {
+            background: #f7fbfd;
+        }
+        .personality-section {
+            background: linear-gradient(to right, #eff4f8, #fff);
+        }
+        .vibes-section {
+            background: #f7fbfd;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #5a7a8b;
+            border-left: 4px solid #b7d5e8;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        .traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        .trait {
+            background: #e8f4fa;
+            color: #374e5d;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        .closing-section {
+            background: linear-gradient(135deg, #374e5d 0%, #5a7a8b 100%);
+            color: white;
+            text-align: center;
+        }
+        .closing-section h2 {
+            color: #b7d5e8;
+            border-bottom-color: #b7d5e8;
+        }
+        .closing-section p {
+            color: #d5eaf5;
+        }
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: #d5eaf5;
+            flex-wrap: wrap;
+        }
+        .page-link {
+            display: block;
+            padding: 2rem 3rem;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #374e5d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .page-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .page-link h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .page-link p {
+            color: #5a7a8b;
+            font-size: 1rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #374e5d;
+            color: #b7d5e8;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="izzy.html">Izzy</a>
+        <a href="tami.html">Tami</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Izzy</h1>
+        <p class="subtitle">Blonde, brilliant, and completely one of a kind</p>
+    </section>
+
+    <section class="section about-section">
+        <h2>Who Is Izzy?</h2>
+        <p>Izzy is the kind of person who sees the world a little differently than everyone else — and that's exactly what makes her so special. With her blonde hair and sharp mind, she stands out in every room she walks into.</p>
+        <p>She has a unique way of looking at things that most people miss. While others skim the surface, Izzy dives deep. She notices the details, spots the patterns, and remembers the things that everyone else forgets.</p>
+    </section>
+
+    <section class="section personality-section">
+        <h2>A Unique Mind</h2>
+        <p>Izzy's mind works in fascinating ways. She's detail-oriented, deeply focused, and incredibly honest. When Izzy cares about something, she goes all in — no half measures, no pretending.</p>
+        <div class="quote">
+            "The people who are crazy enough to think they can change the world are the ones who do."
+        </div>
+        <p>She might process things differently, but that's her superpower. Her perspective brings something to the table that nobody else can offer. She sees connections others miss and asks the questions nobody else thinks to ask.</p>
+    </section>
+
+    <section class="section vibes-section">
+        <h2>What Makes Izzy Great</h2>
+        <div class="traits">
+            <span class="trait">Detail-oriented</span>
+            <span class="trait">Honest</span>
+            <span class="trait">Loyal</span>
+            <span class="trait">Unique perspective</span>
+            <span class="trait">Deep thinker</span>
+            <span class="trait">Passionate</span>
+            <span class="trait">Authentic</span>
+            <span class="trait">Creative</span>
+        </div>
+        <p>Izzy doesn't do fake. What you see is what you get, and that kind of authenticity is rare. She's the friend who will always tell you the truth, always show up when it matters, and always be unapologetically herself.</p>
+        <p>The world needs more people like Izzy — people who aren't afraid to be exactly who they are.</p>
+    </section>
+
+    <div class="page-links">
+        <a href="tami.html" class="page-link">
+            <h3>Meet Tami</h3>
+            <p>The future journalist with big opinions</p>
+        </a>
+        <a href="index.html" class="page-link">
+            <h3>Back Home</h3>
+            <p>Return to the main page</p>
+        </a>
+    </div>
+
+    <section class="section closing-section">
+        <h2>Here's to Izzy</h2>
+        <p>To the girl who sees the world through her own unique lens — never change. Your perspective is a gift, your honesty is refreshing, and your friendship is irreplaceable.</p>
+        <p><strong>Stay golden, Izzy.</strong></p>
+    </section>
+
+    <footer class="footer">
+        Made with love for Izzy & Tami
+    </footer>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tami - Friend Spotlight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(93, 55, 62, 0.95);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #e8b7c0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: white;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #9b4a5c 0%, #d47a8e 50%, #f0b0be 100%);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            font-style: italic;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            font-size: 2.2rem;
+            color: #5d373e;
+            margin-bottom: 1.5rem;
+            font-weight: normal;
+            border-bottom: 2px solid #e8b7c0;
+            padding-bottom: 0.5rem;
+        }
+        .section p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+        }
+        .about-section {
+            background: #fdf7f8;
+        }
+        .beliefs-section {
+            background: linear-gradient(to right, #f8eff1, #fff);
+        }
+        .journalism-section {
+            background: #fdf7f8;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #8b5a63;
+            border-left: 4px solid #e8b7c0;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+        .traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        .trait {
+            background: #fae8ec;
+            color: #5d373e;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        .closing-section {
+            background: linear-gradient(135deg, #5d373e 0%, #8b5a63 100%);
+            color: white;
+            text-align: center;
+        }
+        .closing-section h2 {
+            color: #e8b7c0;
+            border-bottom-color: #e8b7c0;
+        }
+        .closing-section p {
+            color: #f5d5db;
+        }
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem 2rem;
+            background: #f5d5db;
+            flex-wrap: wrap;
+        }
+        .page-link {
+            display: block;
+            padding: 2rem 3rem;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #5d373e;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .page-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .page-link h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .page-link p {
+            color: #8b5a63;
+            font-size: 1rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #5d373e;
+            color: #e8b7c0;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="izzy.html">Izzy</a>
+        <a href="tami.html">Tami</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Tami</h1>
+        <p class="subtitle">Passionate, outspoken, and chasing the truth wherever it leads</p>
+    </section>
+
+    <section class="section about-section">
+        <h2>Who Is Tami?</h2>
+        <p>Tami is the kind of person who walks into a room and makes her presence felt. She has opinions, she has convictions, and she's not afraid to voice them. In a world full of people who stay quiet, Tami speaks up.</p>
+        <p>She knows what she believes in and she stands by it. That kind of conviction takes courage — and Tami has it in abundance.</p>
+    </section>
+
+    <section class="section beliefs-section">
+        <h2>Strong Beliefs, Stronger Voice</h2>
+        <p>Tami doesn't do wishy-washy. When she believes in something, she believes in it with her whole heart. She'll debate you, she'll challenge you, and she'll make you think about things from angles you never considered.</p>
+        <div class="quote">
+            "Well-behaved women seldom make history."
+        </div>
+        <p>Some people might call her intense. Those people are probably right — and that's exactly why she's going to do incredible things. The world doesn't get changed by people who sit on the fence.</p>
+        <p>Tami's strong beliefs aren't just talk. She backs them up with action, research, and an unshakeable sense of what's right.</p>
+    </section>
+
+    <section class="section journalism-section">
+        <h2>Future Journalist</h2>
+        <p>Tami wants to be a journalist, and honestly? The profession needs someone like her. She's curious, relentless, and passionate about uncovering the truth.</p>
+        <div class="traits">
+            <span class="trait">Truth-seeker</span>
+            <span class="trait">Fearless</span>
+            <span class="trait">Opinionated</span>
+            <span class="trait">Curious</span>
+            <span class="trait">Determined</span>
+            <span class="trait">Persuasive</span>
+            <span class="trait">Sharp writer</span>
+            <span class="trait">Passionate</span>
+        </div>
+        <p>Whether it's investigative reporting, opinion writing, or breaking news — Tami has the drive and the voice to make waves. She's the kind of journalist who won't let a story go until the truth comes out.</p>
+        <p>Watch this space. Tami's byline is going to be everywhere someday.</p>
+    </section>
+
+    <div class="page-links">
+        <a href="izzy.html" class="page-link">
+            <h3>Meet Izzy</h3>
+            <p>The one-of-a-kind deep thinker</p>
+        </a>
+        <a href="index.html" class="page-link">
+            <h3>Back Home</h3>
+            <p>Return to the main page</p>
+        </a>
+    </div>
+
+    <section class="section closing-section">
+        <h2>Here's to Tami</h2>
+        <p>To the girl who refuses to stay silent, who chases the truth, and who stands up for what she believes in no matter what — the world needs your voice.</p>
+        <p><strong>Go change the world, Tami. We'll be reading every word.</strong></p>
+    </section>
+
+    <footer class="footer">
+        Made with love for Izzy & Tami
+    </footer>
+</body>
+</html>
