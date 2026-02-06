@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ariella Escapes - Your independent travel agent for dream holidays. Hotels, adventures, package deals, cruises and more. ATOL & ABTA protected bookings.">
+    <title>Ariella Escapes | Independent Travel Agent</title>
+    <style>
+        /* ============================================
+           CSS CUSTOM PROPERTIES
+           ============================================ */
+        :root {
+            --color-primary: #0d7377;
+            --color-primary-dark: #095456;
+            --color-primary-light: #e6f4f4;
+            --color-secondary: #c4704f;
+            --color-secondary-light: #f8ece6;
+            --color-accent: #c9a96e;
+            --color-accent-light: #f5eddf;
+            --color-bg: #faf7f2;
+            --color-bg-white: #ffffff;
+            --color-text: #1a1a2e;
+            --color-text-light: #555566;
+            --color-text-muted: #7a7a8c;
+            --color-border: #e8e4de;
+            --font-heading: 'Georgia', 'Times New Roman', serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --max-width: 1200px;
+            --transition: 0.3s ease;
+        }
+
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: var(--color-primary-dark);
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        /* ============================================
+           SKIP LINK (Accessibility)
+           ============================================ */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+            z-index: 10000;
+            font-weight: 600;
+            transition: top var(--transition);
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--color-border);
+            transition: box-shadow var(--transition);
+        }
+
+        .nav.scrolled {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-logo span {
+            color: var(--color-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a[aria-current="page"]::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--color-primary) !important;
+            color: #fff !important;
+            padding: 0.6rem 1.4rem !important;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-primary-dark) !important;
+            color: #fff !important;
+        }
+
+        /* Mobile menu button */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .nav-toggle svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(13, 115, 119, 0.7) 0%,
+                rgba(9, 84, 86, 0.5) 40%,
+                rgba(26, 26, 46, 0.6) 100%
+            );
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--color-secondary);
+            color: #fff;
+            border-color: var(--color-secondary);
+        }
+
+        .btn-primary:hover {
+            background: #b56343;
+            border-color: #b56343;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 112, 79, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: #fff;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-teal {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+
+        .btn-teal:hover {
+            background: var(--color-primary-dark);
+            border-color: var(--color-primary-dark);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 115, 119, 0.4);
+        }
+
+        /* ============================================
+           SCROLL INDICATOR
+           ============================================ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            animation: gentleBounce 2.5s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ============================================
+           SECTION UTILITIES
+           ============================================ */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--color-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-text);
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           TRUST BAR
+           ============================================ */
+        .trust-bar {
+            background: var(--color-bg-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 2rem;
+        }
+
+        .trust-bar-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about {
+            background: var(--color-bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 4/5;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--color-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.25;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.25rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        .about-highlight svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            background: var(--color-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary-light);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* ============================================
+           DESTINATIONS SECTION
+           ============================================ */
+        .destinations {
+            background: var(--color-bg-white);
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .destination-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+
+        .destination-card h3 {
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .destination-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           HOW IT WORKS SECTION
+           ============================================ */
+        .how-it-works {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .how-it-works .section-label {
+            color: var(--color-accent);
+        }
+
+        .how-it-works .section-title {
+            color: #fff;
+        }
+
+        .how-it-works .section-desc {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .step-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           TESTIMONIALS PREVIEW
+           ============================================ */
+        .testimonials-preview {
+            background: var(--color-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-bg-white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .testimonial-stars {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-trip {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .testimonials-cta {
+            text-align: center;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            background: linear-gradient(
+                135deg,
+                var(--color-secondary) 0%,
+                #b56343 100%
+            );
+            padding: 5rem 2rem;
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn-outline {
+            border-color: #fff;
+        }
+
+        .cta-section .btn-outline:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-text);
+            color: rgba(255,255,255,0.7);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand span {
+            color: var(--color-accent);
+        }
+
+        .footer-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            transition: all var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-protection {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-protection svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-accent);
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 0;
+                border-bottom: 1px solid var(--color-border);
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+                margin-top: 0.5rem;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.9rem 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                aspect-ratio: 16/10;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding: 4rem 1.25rem;
+            }
+
+            .trust-bar-inner {
+                gap: 1.5rem;
+            }
+
+            .trust-item {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 5rem 1.25rem 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 300px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .destinations-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .destination-card {
+                aspect-ratio: 1/1.2;
+            }
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .destination-card:hover img {
+                transform: none;
+            }
+        }
+
+        /* ============================================
+           HIGH CONTRAST / FORCED COLORS
+           ============================================ */
+        @media (forced-colors: active) {
+            .btn {
+                border: 2px solid ButtonText;
+            }
+
+            .service-card,
+            .testimonial-card {
+                border: 1px solid ButtonText;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-inner">
+                <a href="ariella.html" class="nav-logo" aria-label="Ariella Escapes - Home">
+                    Ariella <span>Escapes</span>
+                </a>
+
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+
+                <ul class="nav-links" id="nav-menu" role="list">
+                    <li><a href="ariella.html" aria-current="page">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="https://ariellamandell.inteletravel.uk" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <!-- Hero Section -->
+        <section class="hero" aria-label="Welcome">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
+                     alt="Beautiful tropical beach with turquoise water and white sand"
+                     loading="eager"
+                     fetchpriority="high">
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">Independent Travel Agent</div>
+                <h1>Your Dream Holiday <em>Starts&nbsp;Here</em></h1>
+                <p class="hero-subtitle">
+                    I'm Ariella, and I'm here to take the stress out of travel planning.
+                    From luxury escapes to family adventures, I'll craft the perfect trip just for you.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        Book Your Escape
+                    </a>
+                    <a href="#services" class="btn btn-outline">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <div class="trust-bar" role="region" aria-label="Trust and protection information">
+            <div class="trust-bar-inner">
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ATOL Protected
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ABTA Member
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Free, No-Obligation Quotes
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                    Personal Service
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <section class="section services" id="services" aria-labelledby="services-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-label">What I Offer</div>
+                    <h2 class="section-title" id="services-heading">Travel Services Tailored to You</h2>
+                    <p class="section-desc">Whether you're dreaming of a sun-soaked beach, a city break, or the adventure of a lifetime, I'll find the best options at the best prices.</p>
+                </div>
+
+                <div class="services-grid" role="list">
+                    <!-- Package Holidays -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3>Package Holidays</h3>
+                        <p>All-inclusive getaways, family holidays, honeymoons, and last-minute deals - all ATOL protected and stress-free.</p>
+                    </div>
+
+                    <!-- Hotels & Resorts -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <h3>Hotels & Resorts</h3>
+                        <p>From boutique B&Bs to five-star luxury resorts. I have access to exclusive rates and upgrades you won't find online.</p>
+                    </div>
+
+                    <!-- Adventures & Tours -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+                        </div>
+                        <h3>Adventures & Tours</h3>
+                        <p>Guided tours, safaris, hiking treks, and unique experiences. Let me plan an adventure you'll never forget.</p>
+                    </div>
+
+                    <!-- Cruises -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <h3>Cruises</h3>
+                        <p>River cruises, ocean voyages, and expedition sailings. Access every major cruise line with expert advice.</p>
+                    </div>
+
+                    <!-- Flights -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </div>
+                        <h3>Flights</h3>
+                        <p>Competitive flight prices worldwide. Economy to first class, short-haul to long-haul - I'll find your best route.</p>
+                    </div>
+
+                    <!-- Bespoke Travel -->
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <h3>Bespoke Travel</h3>
+                        <p>Got a special request? Weddings abroad, group trips, corporate travel - I'll make it happen exactly how you envision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Destinations Section -->
+        <section class="section destinations" id="destinations" aria-labelledby="destinations-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-label">Popular Destinations</div>
+                    <h2 class="section-title" id="destinations-heading">Where Will You Escape To?</h2>
+                    <p class="section-desc">From sun-drenched beaches to snow-capped mountains, the world is waiting. Here are some favourite escapes.</p>
+                </div>
+
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80"
+                             alt="Luxury resort with infinity pool overlooking the ocean in the Maldives"
+                             loading="lazy">
+                        <div class="destination-overlay">
+                            <h3>Maldives</h3>
+                            <p>Luxury overwater villas</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80"
+                             alt="Crystal clear lake surrounded by mountains and forests in Europe"
+                             loading="lazy">
+                        <div class="destination-overlay">
+                            <h3>Europe</h3>
+                            <p>City breaks & culture</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80"
+                             alt="Dramatic mountain landscape with lake at sunset"
+                             loading="lazy">
+                        <div class="destination-overlay">
+                            <h3>Southeast Asia</h3>
+                            <p>Adventure & discovery</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=600&q=80"
+                             alt="Turquoise Caribbean sea with tropical island and palm trees"
+                             loading="lazy">
+                        <div class="destination-overlay">
+                            <h3>Caribbean</h3>
+                            <p>Sun, sand & all-inclusive</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section how-it-works" aria-labelledby="how-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-label">How It Works</div>
+                    <h2 class="section-title" id="how-heading">Booking Made Simple</h2>
+                    <p class="section-desc">No trawling through comparison sites. No hidden fees. Just a personal service from start to finish.</p>
+                </div>
+
+                <div class="steps-grid" role="list">
+                    <div class="step-card" role="listitem">
+                        <div class="step-number" aria-hidden="true">1</div>
+                        <h3>Tell Me Your Dreams</h3>
+                        <p>Get in touch and tell me where you want to go, your budget, and what matters most to you.</p>
+                    </div>
+                    <div class="step-card" role="listitem">
+                        <div class="step-number" aria-hidden="true">2</div>
+                        <h3>I'll Do the Research</h3>
+                        <p>I search through thousands of options to find the best deals and experiences, tailored to you.</p>
+                    </div>
+                    <div class="step-card" role="listitem">
+                        <div class="step-number" aria-hidden="true">3</div>
+                        <h3>Choose & Book</h3>
+                        <p>Pick your perfect trip. I'll handle all the bookings, transfers, and details so you don't have to.</p>
+                    </div>
+                    <div class="step-card" role="listitem">
+                        <div class="step-number" aria-hidden="true">4</div>
+                        <h3>Escape & Enjoy</h3>
+                        <p>Relax and enjoy your holiday knowing I'm here if you need anything, before and during your trip.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about" id="about" aria-labelledby="about-heading">
+            <div class="section-inner">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80"
+                             alt="Road leading towards mountains at sunset, representing the journey of travel"
+                             loading="lazy">
+                    </div>
+                    <div class="about-content">
+                        <div class="section-label">About Me</div>
+                        <h2 id="about-heading">Hi, I'm Ariella</h2>
+                        <p>I'm an independent travel agent with a genuine passion for helping people find their perfect escape. Whether it's a relaxing beach holiday, a once-in-a-lifetime adventure, or a romantic getaway, I love making dream trips a reality.</p>
+                        <p>As your personal travel agent, I offer a service you simply can't get from booking online. I take the time to understand what you want, search for the best deals, and handle every detail so you can just look forward to your holiday.</p>
+                        <p>My service is completely free to use - I earn commission from the travel suppliers, not from you. And all bookings come with full ATOL and ABTA protection for your peace of mind.</p>
+
+                        <div class="about-highlights">
+                            <div class="about-highlight">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Free, personal service
+                            </div>
+                            <div class="about-highlight">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                ATOL & ABTA protected
+                            </div>
+                            <div class="about-highlight">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Exclusive deals & rates
+                            </div>
+                            <div class="about-highlight">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Available 7 days a week
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Preview -->
+        <section class="section testimonials-preview" aria-labelledby="testimonials-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-label">Happy Travellers</div>
+                    <h2 class="section-title" id="testimonials-heading">What My Clients Say</h2>
+                    <p class="section-desc">Don't just take my word for it - hear from people who've booked their dream holidays through Ariella Escapes.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>"Ariella made our honeymoon absolutely magical. She found us an incredible deal on an overwater villa that we never would have found ourselves. Every detail was perfect."</blockquote>
+                        <div class="testimonial-author">Sophie & James</div>
+                        <div class="testimonial-trip">Honeymoon in the Maldives</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>"Booking a family holiday with three kids can be a nightmare. Ariella took over, found us the perfect all-inclusive resort, and saved us hundreds compared to what I'd found online."</blockquote>
+                        <div class="testimonial-author">Rachel T.</div>
+                        <div class="testimonial-trip">Family holiday in Turkey</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <blockquote>"I'd never used a travel agent before but Ariella has completely changed how I book holidays. The personal touch makes all the difference. I won't go back to doing it myself!"</blockquote>
+                        <div class="testimonial-author">Mark D.</div>
+                        <div class="testimonial-trip">Adventure trip to Thailand</div>
+                    </div>
+                </div>
+
+                <div class="testimonials-cta">
+                    <a href="reviews.html" class="btn btn-teal">Read All Reviews</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="section-inner">
+                <h2 id="cta-heading">Ready to Plan Your Next Escape?</h2>
+                <p>Get in touch today for a free, no-obligation quote. Let's find your perfect holiday together.</p>
+                <div class="hero-buttons">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Online Now</a>
+                    <a href="https://www.instagram.com/arielle.escapes/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Ariella <span>Escapes</span></div>
+                    <p class="footer-desc">Your independent travel agent, dedicated to finding you the perfect getaway. Free personal service with full financial protection on every booking.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/arielle.escapes/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow Ariella Escapes on Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <circle cx="12" cy="12" r="5"/>
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="ariella.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#services">Package Holidays</a></li>
+                        <li><a href="#services">Hotels & Resorts</a></li>
+                        <li><a href="#services">Cruises</a></li>
+                        <li><a href="#services">Adventures & Tours</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Helpful</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="reviews.html">Client Reviews</a></li>
+                        <li><a href="https://ariellamandell.inteletravel.uk" target="_blank" rel="noopener noreferrer">Book Online</a></li>
+                        <li><a href="https://www.instagram.com/arielle.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ariella Escapes. All rights reserved.</p>
+                <div class="footer-protection">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ATOL & ABTA Protected
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile navigation toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', function() {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close mobile menu when a link is clicked
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Add shadow to nav on scroll
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.focus();
+            }
+        });
+    </script>
+
+</body>
+</html>
