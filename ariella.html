@@ -3,49 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ariella Escapes - Your independent travel agent for dream holidays. Hotels, adventures, package deals, cruises and more. ATOL & ABTA protected bookings.">
-    <title>Ariella Escapes | Independent Travel Agent</title>
+    <meta name="description" content="Ariella Escapes - Your personal, independent travel agent. Hotels, adventures, package deals, cruises and more. ATOL & ABTA protected. Free service, no hidden fees.">
+    <title>Ariella Escapes | Your Personal Travel Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           CSS CUSTOM PROPERTIES
-           ============================================ */
         :root {
-            --color-primary: #0d7377;
-            --color-primary-dark: #095456;
-            --color-primary-light: #e6f4f4;
-            --color-secondary: #c4704f;
-            --color-secondary-light: #f8ece6;
-            --color-accent: #c9a96e;
-            --color-accent-light: #f5eddf;
-            --color-bg: #faf7f2;
+            --color-primary: #1a6b5a;
+            --color-primary-dark: #145548;
+            --color-primary-light: #e8f3f0;
+            --color-warm: #c97b4b;
+            --color-warm-dark: #a8623a;
+            --color-warm-light: #faf0e8;
+            --color-gold: #b8965a;
+            --color-bg: #faf8f5;
+            --color-bg-warm: #f5f0ea;
             --color-bg-white: #ffffff;
-            --color-text: #1a1a2e;
-            --color-text-light: #555566;
-            --color-text-muted: #7a7a8c;
-            --color-border: #e8e4de;
-            --font-heading: 'Georgia', 'Times New Roman', serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-            --radius: 12px;
-            --max-width: 1200px;
+            --color-text: #1c1c28;
+            --color-text-mid: #444455;
+            --color-text-light: #6b6b7b;
+            --color-text-muted: #999;
+            --color-border: #e6e1da;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --shadow-xs: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 50px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --max-width: 1160px;
             --transition: 0.3s ease;
         }
 
-        /* ============================================
-           RESET & BASE
-           ============================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-body);
@@ -53,1000 +47,596 @@
             color: var(--color-text);
             background: var(--color-bg);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { max-width: 100%; height: auto; display: block; }
 
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
+        a { color: var(--color-primary); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--color-primary-dark); }
 
-        a:hover {
-            color: var(--color-primary-dark);
-        }
-
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible {
+        a:focus-visible, button:focus-visible {
             outline: 3px solid var(--color-primary);
-            outline-offset: 2px;
+            outline-offset: 3px;
         }
 
-        /* ============================================
-           SKIP LINK (Accessibility)
-           ============================================ */
+        /* Skip Link */
         .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 1rem;
-            background: var(--color-primary);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0 0 var(--radius) var(--radius);
-            z-index: 10000;
-            font-weight: 600;
-            transition: top var(--transition);
+            position: absolute; top: -100%; left: 1rem;
+            background: var(--color-primary); color: #fff;
+            padding: 0.75rem 1.5rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            z-index: 10000; font-weight: 600;
         }
+        .skip-link:focus { top: 0; }
 
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
+        /* ── NAV ── */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--color-border);
-            transition: box-shadow var(--transition);
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06);
         }
-
-        .nav.scrolled {
-            box-shadow: var(--shadow-sm);
-        }
+        .nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
 
         .nav-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
+            max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center; height: 70px;
         }
 
         .nav-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-family: var(--font-display); font-size: 1.45rem;
+            color: var(--color-text); font-weight: 700; letter-spacing: -0.01em;
         }
+        .nav-logo span { color: var(--color-primary); font-style: italic; font-weight: 500; }
 
-        .nav-logo span {
-            color: var(--color-secondary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
+        .nav-links { display: flex; list-style: none; gap: 1.75rem; align-items: center; }
 
         .nav-links a {
-            color: var(--color-text);
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
+            color: var(--color-text-mid); font-size: 0.9rem; font-weight: 500;
+            padding: 0.4rem 0; position: relative; letter-spacing: 0.01em;
         }
-
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 2px; background: var(--color-primary);
             transition: width var(--transition);
         }
-
-        .nav-links a:hover::after,
-        .nav-links a[aria-current="page"]::after {
-            width: 100%;
-        }
+        .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { width: 100%; }
+        .nav-links a:hover { color: var(--color-text); }
 
         .nav-cta {
-            background: var(--color-primary) !important;
-            color: #fff !important;
-            padding: 0.6rem 1.4rem !important;
-            border-radius: 50px;
-            font-weight: 600 !important;
+            background: var(--color-primary) !important; color: #fff !important;
+            padding: 0.55rem 1.3rem !important; border-radius: 50px;
+            font-weight: 600 !important; font-size: 0.85rem !important;
+            letter-spacing: 0.02em;
         }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--color-primary-dark) !important; color: #fff !important; }
 
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--color-primary-dark) !important;
-            color: #fff !important;
-        }
-
-        /* Mobile menu button */
         .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--color-text);
+            display: none; background: none; border: none;
+            cursor: pointer; padding: 0.5rem; color: var(--color-text);
         }
+        .nav-toggle svg { width: 26px; height: 26px; }
 
-        .nav-toggle svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
+        /* ── HERO ── */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            padding: 6rem 2rem 4rem;
+            position: relative; min-height: 100vh; display: flex;
+            align-items: center; justify-content: center; text-align: center;
+            overflow: hidden; padding: 7rem 2rem 5rem;
         }
 
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: -2;
-        }
-
-        .hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .hero-bg { position: absolute; inset: 0; z-index: -2; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
 
         .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(13, 115, 119, 0.7) 0%,
-                rgba(9, 84, 86, 0.5) 40%,
-                rgba(26, 26, 46, 0.6) 100%
-            );
-            z-index: -1;
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(160deg, rgba(26,107,90,0.65) 0%, rgba(20,85,72,0.45) 35%, rgba(28,28,40,0.55) 100%);
         }
 
-        .hero-content {
-            max-width: 750px;
-        }
+        .hero-content { max-width: 720px; }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            padding: 0.5rem 1.25rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.3);
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            color: #fff; padding: 0.45rem 1.2rem; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; margin-bottom: 1.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .hero h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 1.25rem;
-            font-weight: 700;
+            font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.2rem);
+            color: #fff; line-height: 1.12; margin-bottom: 1.25rem; font-weight: 700;
+        }
+        .hero h1 em { font-style: italic; color: var(--color-gold); font-weight: 500; }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300;
         }
 
-        .hero h1 em {
-            font-style: italic;
-            color: var(--color-accent);
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .scroll-hint {
+            position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.6); animation: float 3s ease-in-out infinite;
+        }
+        .scroll-hint svg { width: 28px; height: 28px; }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.05rem, 2vw, 1.3rem);
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ============================================
-           BUTTONS
-           ============================================ */
+        /* ── BUTTONS ── */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all var(--transition);
-            border: 2px solid transparent;
-            cursor: pointer;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.9rem; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            transition: all var(--transition); border: 2px solid transparent;
+            cursor: pointer; letter-spacing: 0.01em;
+        }
+        .btn svg { width: 18px; height: 18px; }
+
+        .btn-warm {
+            background: var(--color-warm); color: #fff; border-color: var(--color-warm);
+        }
+        .btn-warm:hover {
+            background: var(--color-warm-dark); border-color: var(--color-warm-dark);
+            color: #fff; transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,123,75,0.35);
+        }
+
+        .btn-glass {
+            background: rgba(255,255,255,0.12); color: #fff;
+            border-color: rgba(255,255,255,0.35); backdrop-filter: blur(6px);
+        }
+        .btn-glass:hover {
+            background: rgba(255,255,255,0.22); border-color: #fff;
+            color: #fff; transform: translateY(-2px);
         }
 
         .btn-primary {
-            background: var(--color-secondary);
-            color: #fff;
-            border-color: var(--color-secondary);
+            background: var(--color-primary); color: #fff; border-color: var(--color-primary);
         }
-
         .btn-primary:hover {
-            background: #b56343;
-            border-color: #b56343;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(196, 112, 79, 0.4);
+            background: var(--color-primary-dark); border-color: var(--color-primary-dark);
+            color: #fff; transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26,107,90,0.3);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border-color: rgba(255,255,255,0.5);
+        .btn-outline-dark {
+            background: transparent; color: var(--color-text);
+            border-color: var(--color-border);
         }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: #fff;
-            color: #fff;
+        .btn-outline-dark:hover {
+            border-color: var(--color-primary); color: var(--color-primary);
             transform: translateY(-2px);
         }
 
-        .btn-teal {
-            background: var(--color-primary);
-            color: #fff;
-            border-color: var(--color-primary);
+        .btn-white {
+            background: #fff; color: var(--color-warm); border-color: #fff;
+        }
+        .btn-white:hover {
+            background: rgba(255,255,255,0.92); color: var(--color-warm-dark);
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.25);
         }
 
-        .btn-teal:hover {
-            background: var(--color-primary-dark);
-            border-color: var(--color-primary-dark);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(13, 115, 119, 0.4);
+        /* ── TRUST BAR ── */
+        .trust-bar {
+            background: var(--color-bg-white); border-bottom: 1px solid var(--color-border);
+            padding: 1.25rem 2rem;
         }
-
-        /* ============================================
-           SCROLL INDICATOR
-           ============================================ */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.7);
-            animation: gentleBounce 2.5s ease-in-out infinite;
+        .trust-bar-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+            gap: 2.5rem; flex-wrap: wrap;
         }
-
-        .scroll-indicator svg {
-            width: 32px;
-            height: 32px;
+        .trust-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--color-text-light); font-size: 0.82rem; font-weight: 600;
+            letter-spacing: 0.03em; text-transform: uppercase;
         }
+        .trust-item svg { width: 18px; height: 18px; color: var(--color-primary); flex-shrink: 0; }
 
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
+        /* ── SECTIONS ── */
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: var(--max-width); margin: 0 auto; }
 
-        /* ============================================
-           SECTION UTILITIES
-           ============================================ */
-        .section {
-            padding: 6rem 2rem;
-        }
-
-        .section-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 3.5rem;
-        }
-
-        .section-label {
-            display: inline-block;
-            color: var(--color-primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+        .section-header { text-align: center; max-width: 620px; margin: 0 auto 3.5rem; }
+        .section-eyebrow {
+            display: inline-block; color: var(--color-primary); font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
             margin-bottom: 0.75rem;
         }
-
         .section-title {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--color-text);
-            line-height: 1.25;
-            margin-bottom: 1rem;
+            font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.6rem);
+            color: var(--color-text); line-height: 1.2; margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem; color: var(--color-text-light); line-height: 1.75; font-weight: 400;
         }
 
-        .section-desc {
-            font-size: 1.1rem;
-            color: var(--color-text-light);
-            line-height: 1.7;
+        /* ── MEET ARIELLA (Brand Section) ── */
+        .brand-section { background: var(--color-bg-white); }
+
+        .brand-grid {
+            display: grid; grid-template-columns: 5fr 6fr; gap: 4.5rem; align-items: center;
         }
 
-        /* ============================================
-           TRUST BAR
-           ============================================ */
-        .trust-bar {
-            background: var(--color-bg-white);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1.5rem 2rem;
+        .brand-image-wrapper {
+            position: relative;
+        }
+        .brand-image {
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-lg); aspect-ratio: 4/5;
+        }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-image-accent {
+            position: absolute; bottom: -16px; right: -16px;
+            width: 140px; height: 140px; border-radius: var(--radius);
+            background: var(--color-primary-light); z-index: -1;
         }
 
-        .trust-bar-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+        .brand-content .section-eyebrow { text-align: left; }
+
+        .brand-content h2 {
+            font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--color-text); margin-bottom: 1.5rem; line-height: 1.2;
+        }
+        .brand-content h2 em {
+            color: var(--color-primary); font-style: italic; font-weight: 500;
         }
 
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--color-text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
+        .brand-content p {
+            font-size: 1rem; color: var(--color-text-mid); margin-bottom: 1.15rem;
+            line-height: 1.8;
         }
 
-        .trust-item svg {
-            width: 20px;
-            height: 20px;
-            color: var(--color-primary);
-            flex-shrink: 0;
+        .brand-values {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 2rem;
+        }
+        .brand-value {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            font-weight: 500; color: var(--color-text); font-size: 0.9rem;
+        }
+        .brand-value svg {
+            width: 18px; height: 18px; color: var(--color-primary);
+            flex-shrink: 0; margin-top: 2px;
         }
 
-        /* ============================================
-           ABOUT SECTION
-           ============================================ */
-        .about {
-            background: var(--color-bg-white);
+        .brand-ig-link {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            margin-top: 2rem; padding: 0.65rem 1.4rem;
+            background: var(--color-bg); border-radius: 50px;
+            color: var(--color-text-mid); font-size: 0.88rem; font-weight: 600;
+            border: 1px solid var(--color-border); transition: all var(--transition);
+        }
+        .brand-ig-link svg { width: 20px; height: 20px; }
+        .brand-ig-link:hover {
+            border-color: var(--color-primary); color: var(--color-primary);
+            background: var(--color-primary-light);
         }
 
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            aspect-ratio: 4/5;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-content h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--color-text);
-            margin-bottom: 1.5rem;
-            line-height: 1.25;
-        }
-
-        .about-content p {
-            font-size: 1.05rem;
-            color: var(--color-text-light);
-            margin-bottom: 1.25rem;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .about-highlight {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            color: var(--color-text);
-            font-size: 0.95rem;
-        }
-
-        .about-highlight svg {
-            width: 20px;
-            height: 20px;
-            color: var(--color-primary);
-            flex-shrink: 0;
-        }
-
-        /* ============================================
-           SERVICES SECTION
-           ============================================ */
-        .services {
-            background: var(--color-bg);
-        }
+        /* ── SERVICES ── */
+        .services { background: var(--color-bg); }
 
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
         }
 
         .service-card {
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition);
-            border: 1px solid var(--color-border);
+            background: var(--color-bg-white); border-radius: var(--radius);
+            padding: 2.25rem 1.75rem; border: 1px solid var(--color-border);
+            transition: all var(--transition); position: relative; overflow: hidden;
         }
-
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--color-primary);
+            transform: scaleX(0); transition: transform var(--transition);
+            transform-origin: left;
+        }
         .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--color-primary-light);
+            transform: translateY(-4px); box-shadow: var(--shadow-md);
+            border-color: transparent;
         }
+        .service-card:hover::before { transform: scaleX(1); }
 
         .service-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--color-primary-light);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--color-primary);
+            width: 50px; height: 50px; background: var(--color-primary-light);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 1.25rem; color: var(--color-primary);
         }
-
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-        }
+        .service-icon svg { width: 24px; height: 24px; }
 
         .service-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: var(--color-text);
-            margin-bottom: 0.75rem;
+            font-family: var(--font-display); font-size: 1.2rem;
+            color: var(--color-text); margin-bottom: 0.6rem;
         }
-
         .service-card p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-            line-height: 1.65;
+            color: var(--color-text-light); font-size: 0.9rem; line-height: 1.7;
         }
 
-        /* ============================================
-           DESTINATIONS SECTION
-           ============================================ */
-        .destinations {
-            background: var(--color-bg-white);
-        }
+        /* ── DESTINATIONS ── */
+        .destinations { background: var(--color-bg-white); }
 
         .destinations-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        .destinations-grid .destination-card:first-child {
+            grid-row: 1 / 3; grid-column: 1 / 2;
+        }
+        .destinations-grid .destination-card:nth-child(4) {
+            grid-row: 1 / 3; grid-column: 4 / 5;
         }
 
         .destination-card {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            cursor: pointer;
+            position: relative; border-radius: var(--radius);
+            overflow: hidden; min-height: 220px; cursor: pointer;
         }
-
         .destination-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
         }
+        .destination-card:hover img { transform: scale(1.06); }
 
-        .destination-card:hover img {
-            transform: scale(1.05);
+        .dest-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 55%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 1.25rem;
         }
-
-        .destination-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-        }
-
         .destination-card h3 {
-            color: #fff;
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 0.25rem;
+            color: #fff; font-family: var(--font-display);
+            font-size: 1.25rem; margin-bottom: 0.15rem;
         }
+        .destination-card p { color: rgba(255,255,255,0.8); font-size: 0.82rem; }
 
-        .destination-card p {
-            color: rgba(255,255,255,0.85);
-            font-size: 0.9rem;
-        }
-
-        /* ============================================
-           HOW IT WORKS SECTION
-           ============================================ */
-        .how-it-works {
+        /* ── WHY ARIELLA ── */
+        .why-section {
             background: var(--color-primary);
             color: #fff;
         }
+        .why-section .section-eyebrow { color: var(--color-gold); }
+        .why-section .section-title { color: #fff; }
+        .why-section .section-subtitle { color: rgba(255,255,255,0.75); }
 
-        .how-it-works .section-label {
-            color: var(--color-accent);
+        .why-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        .why-card { text-align: center; padding: 1.5rem 1rem; }
+        .why-icon {
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 1.25rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .why-icon svg { width: 28px; height: 28px; color: var(--color-gold); }
+        .why-card h3 {
+            font-family: var(--font-display); font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+        .why-card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.7; }
+
+        /* ── HOW IT WORKS ── */
+        .process { background: var(--color-bg); }
+
+        .process-track {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+            position: relative;
+        }
+        .process-track::before {
+            content: ''; position: absolute; top: 28px;
+            left: 12.5%; right: 12.5%; height: 2px;
+            background: var(--color-border);
         }
 
-        .how-it-works .section-title {
-            color: #fff;
+        .process-step { text-align: center; position: relative; padding: 0 1rem; }
+        .process-num {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--color-bg-white); border: 2px solid var(--color-primary);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem; font-family: var(--font-display);
+            font-size: 1.3rem; font-weight: 700; color: var(--color-primary);
+            position: relative; z-index: 1;
+        }
+        .process-step h3 {
+            font-family: var(--font-display); font-size: 1.1rem;
+            color: var(--color-text); margin-bottom: 0.5rem;
+        }
+        .process-step p { color: var(--color-text-light); font-size: 0.88rem; line-height: 1.65; }
+
+        /* ── INSTAGRAM / SOCIAL PROOF ── */
+        .ig-section { background: var(--color-bg-white); }
+
+        .ig-header {
+            text-align: center; margin-bottom: 2.5rem;
+        }
+        .ig-handle {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            font-family: var(--font-display); font-size: 1.3rem;
+            color: var(--color-text); margin-bottom: 0.5rem;
+        }
+        .ig-handle svg { width: 28px; height: 28px; color: var(--color-warm); }
+        .ig-tagline { color: var(--color-text-light); font-size: 0.95rem; }
+
+        .ig-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+        }
+        .ig-card {
+            border-radius: var(--radius-sm); overflow: hidden;
+            aspect-ratio: 1; position: relative;
+        }
+        .ig-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .ig-card:hover img { transform: scale(1.05); }
+        .ig-card-overlay {
+            position: absolute; inset: 0;
+            background: rgba(26,107,90,0.6); opacity: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity var(--transition);
+        }
+        .ig-card:hover .ig-card-overlay { opacity: 1; }
+        .ig-card-overlay svg { width: 32px; height: 32px; color: #fff; }
+
+        .ig-follow {
+            text-align: center; margin-top: 2.5rem;
         }
 
-        .how-it-works .section-desc {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-        }
-
-        .step-card {
-            text-align: center;
-            padding: 2rem 1.5rem;
-        }
-
-        .step-number {
-            width: 56px;
-            height: 56px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.25rem;
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-accent);
-            border: 2px solid rgba(255,255,255,0.2);
-        }
-
-        .step-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .step-card p {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* ============================================
-           TESTIMONIALS PREVIEW
-           ============================================ */
-        .testimonials-preview {
-            background: var(--color-bg);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .testimonial-card {
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-        }
-
-        .testimonial-stars {
-            color: var(--color-accent);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .testimonial-card blockquote {
-            font-size: 1rem;
-            color: var(--color-text-light);
-            line-height: 1.7;
-            margin-bottom: 1.25rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--color-text);
-            font-size: 0.95rem;
-        }
-
-        .testimonial-trip {
-            color: var(--color-text-muted);
-            font-size: 0.85rem;
-            margin-top: 0.2rem;
-        }
-
-        .testimonials-cta {
-            text-align: center;
-        }
-
-        /* ============================================
-           CTA SECTION
-           ============================================ */
+        /* ── CTA ── */
         .cta-section {
-            background: linear-gradient(
-                135deg,
-                var(--color-secondary) 0%,
-                #b56343 100%
-            );
-            padding: 5rem 2rem;
-            text-align: center;
-            color: #fff;
+            position: relative; padding: 6rem 2rem; text-align: center;
+            color: #fff; overflow: hidden;
         }
-
+        .cta-bg { position: absolute; inset: 0; z-index: -2; }
+        .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .cta-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(135deg, rgba(201,123,75,0.85) 0%, rgba(168,98,58,0.9) 100%);
+        }
         .cta-section h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.8rem);
             margin-bottom: 1rem;
         }
-
         .cta-section p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem; color: rgba(255,255,255,0.9);
+            margin-bottom: 2.25rem; max-width: 520px; margin-left: auto; margin-right: auto;
+            font-weight: 300;
         }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        .cta-section .btn-outline {
-            border-color: #fff;
-        }
-
-        .cta-section .btn-outline:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
+        /* ── FOOTER ── */
         .footer {
-            background: var(--color-text);
-            color: rgba(255,255,255,0.7);
-            padding: 4rem 2rem 2rem;
+            background: #1c1c28; color: rgba(255,255,255,0.65); padding: 4rem 2rem 2rem;
         }
-
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; }
 
         .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 3rem;
         }
 
         .footer-brand {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 1rem;
+            font-family: var(--font-display); font-size: 1.4rem; color: #fff;
+            margin-bottom: 0.75rem;
         }
+        .footer-brand span { color: var(--color-primary); font-style: italic; font-weight: 500; }
+        .footer-desc { font-size: 0.88rem; line-height: 1.75; margin-bottom: 1.5rem; }
 
-        .footer-brand span {
-            color: var(--color-accent);
-        }
-
-        .footer-desc {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer h4 {
-            color: #fff;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.6rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            transition: color var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
+        .social-links { display: flex; gap: 0.75rem; }
         .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.7);
+            width: 38px; height: 38px; background: rgba(255,255,255,0.08);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: rgba(255,255,255,0.6);
             transition: all var(--transition);
         }
+        .social-link:hover { background: var(--color-primary); color: #fff; }
+        .social-link svg { width: 18px; height: 18px; }
 
-        .social-link:hover {
-            background: var(--color-primary);
-            color: #fff;
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-        }
+        .footer h4 { color: #fff; font-size: 0.85rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.55rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+        .footer-links a:hover { color: #fff; }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem; font-size: 0.8rem;
         }
+        .footer-protection { display: flex; align-items: center; gap: 0.5rem; }
+        .footer-protection svg { width: 15px; height: 15px; color: var(--color-gold); }
 
-        .footer-protection {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-protection svg {
-            width: 16px;
-            height: 16px;
-            color: var(--color-accent);
-        }
-
-        /* ============================================
-           MOBILE RESPONSIVE
-           ============================================ */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px;
-                left: 0;
-                right: 0;
-                background: rgba(255,255,255,0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 1.5rem 2rem;
-                gap: 0;
-                border-bottom: 1px solid var(--color-border);
-                box-shadow: var(--shadow-md);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links li {
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
-                margin-top: 0.5rem;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.9rem 0;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-image {
-                aspect-ratio: 16/10;
-            }
-
-            .about-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .destinations-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 2rem;
+                grid-template-rows: auto;
             }
+            .destinations-grid .destination-card:first-child,
+            .destinations-grid .destination-card:nth-child(4) {
+                grid-row: auto; grid-column: auto;
+            }
+            .destination-card { min-height: 260px; }
+            .why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .ig-grid { grid-template-columns: repeat(2, 1fr); }
+        }
 
-            .section {
-                padding: 4rem 1.25rem;
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+                flex-direction: column; padding: 1rem 2rem;
+                border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-md);
             }
+            .nav-links.open { display: flex; }
+            .nav-links li { border-bottom: 1px solid var(--color-border); }
+            .nav-links li:last-child { border-bottom: none; margin-top: 0.5rem; }
+            .nav-links a { display: block; padding: 0.85rem 0; }
 
-            .trust-bar-inner {
-                gap: 1.5rem;
-            }
+            .brand-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .brand-image { aspect-ratio: 16/10; }
+            .brand-image-accent { display: none; }
+            .brand-values { grid-template-columns: 1fr; }
 
-            .trust-item {
-                font-size: 0.8rem;
-            }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .section { padding: 4rem 1.25rem; }
+
+            .process-track { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .process-track::before { display: none; }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 5rem 1.25rem 3rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                max-width: 300px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .destinations-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .destination-card {
-                aspect-ratio: 1/1.2;
-            }
+            .hero { padding: 6rem 1.25rem 3.5rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; max-width: 300px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .destinations-grid { grid-template-columns: 1fr; }
+            .destination-card { min-height: 300px; }
+            .ig-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .process-track { grid-template-columns: 1fr; }
+            .cta-btns { flex-direction: column; align-items: center; }
         }
 
-        /* ============================================
-           REDUCED MOTION
-           ============================================ */
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
+            html { scroll-behavior: auto; }
             *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
             }
-
-            .destination-card:hover img {
-                transform: none;
-            }
+            .destination-card:hover img, .ig-card:hover img { transform: none; }
         }
 
-        /* ============================================
-           HIGH CONTRAST / FORCED COLORS
-           ============================================ */
         @media (forced-colors: active) {
-            .btn {
-                border: 2px solid ButtonText;
-            }
-
-            .service-card,
-            .testimonial-card {
-                border: 1px solid ButtonText;
-            }
+            .btn { border: 2px solid ButtonText; }
+            .service-card { border: 1px solid ButtonText; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Skip Navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
+    <!-- Nav -->
     <header>
-        <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+        <nav class="nav" id="navbar" aria-label="Main navigation">
             <div class="nav-inner">
                 <a href="ariella.html" class="nav-logo" aria-label="Ariella Escapes - Home">
                     Ariella <span>Escapes</span>
                 </a>
-
                 <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
-
                 <ul class="nav-links" id="nav-menu" role="list">
                     <li><a href="ariella.html" aria-current="page">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#destinations">Destinations</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about">About Ariella</a></li>
                     <li><a href="reviews.html">Reviews</a></li>
                     <li><a href="https://ariellamandell.inteletravel.uk" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
                 </ul>
@@ -1054,46 +644,38 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main id="main-content">
 
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero" aria-label="Welcome">
             <div class="hero-bg">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
-                     alt="Beautiful tropical beach with turquoise water and white sand"
-                     loading="eager"
-                     fetchpriority="high">
+                <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1920&q=80"
+                     alt="Crystal clear ocean water with sunlight shimmering across the surface"
+                     loading="eager" fetchpriority="high">
             </div>
             <div class="hero-overlay" aria-hidden="true"></div>
-
             <div class="hero-content">
-                <div class="hero-badge">Independent Travel Agent</div>
-                <h1>Your Dream Holiday <em>Starts&nbsp;Here</em></h1>
-                <p class="hero-subtitle">
-                    I'm Ariella, and I'm here to take the stress out of travel planning.
-                    From luxury escapes to family adventures, I'll craft the perfect trip just for you.
+                <div class="hero-eyebrow">Your Personal Travel Agent</div>
+                <h1>Travel Made Personal.<br><em>Memories Made Forever.</em></h1>
+                <p class="hero-sub">
+                    I'm Ariella - I plan holidays you'll never stop talking about.
+                    No comparison sites, no stress, no fees. Just you, me, and your dream destination.
                 </p>
-                <div class="hero-buttons">
-                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                        Book Your Escape
+                <div class="hero-btns">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-warm" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        Start Planning
                     </a>
-                    <a href="#services" class="btn btn-outline">
-                        Explore Services
-                    </a>
+                    <a href="#about" class="btn btn-glass">Meet Ariella</a>
                 </div>
             </div>
-
-            <div class="scroll-indicator" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                </svg>
+            <div class="scroll-hint" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
             </div>
         </section>
 
-        <!-- Trust Bar -->
-        <div class="trust-bar" role="region" aria-label="Trust and protection information">
+        <!-- Trust -->
+        <div class="trust-bar" role="region" aria-label="Trust and protection">
             <div class="trust-bar-inner">
                 <div class="trust-item">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -1104,255 +686,284 @@
                     ABTA Member
                 </div>
                 <div class="trust-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Free, No-Obligation Quotes
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    100% Free Service
                 </div>
                 <div class="trust-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
-                    Personal Service
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    Personal Touch
                 </div>
             </div>
         </div>
 
-        <!-- Services Section -->
-        <section class="section services" id="services" aria-labelledby="services-heading">
+        <!-- Meet Ariella -->
+        <section class="section brand-section" id="about" aria-labelledby="about-heading">
             <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-label">What I Offer</div>
-                    <h2 class="section-title" id="services-heading">Travel Services Tailored to You</h2>
-                    <p class="section-desc">Whether you're dreaming of a sun-soaked beach, a city break, or the adventure of a lifetime, I'll find the best options at the best prices.</p>
-                </div>
-
-                <div class="services-grid" role="list">
-                    <!-- Package Holidays -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="brand-grid">
+                    <div class="brand-image-wrapper">
+                        <div class="brand-image">
+                            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80"
+                                 alt="Travel planning with a passport, map and camera laid out on a table"
+                                 loading="lazy">
                         </div>
-                        <h3>Package Holidays</h3>
-                        <p>All-inclusive getaways, family holidays, honeymoons, and last-minute deals - all ATOL protected and stress-free.</p>
+                        <div class="brand-image-accent" aria-hidden="true"></div>
                     </div>
+                    <div class="brand-content">
+                        <div class="section-eyebrow">The Person Behind the Brand</div>
+                        <h2 id="about-heading">I'm Ariella, and I believe holidays should be <em>effortless</em></h2>
+                        <p>I started Ariella Escapes because I saw too many people spending hours scrolling through comparison sites, second-guessing their choices, and ending up with a holiday that was just... fine. I think you deserve better than fine.</p>
+                        <p>When you book with me, you get a real person who genuinely cares about your trip. I listen. I research. I find options you didn't know existed. And I handle every detail from first enquiry to the moment you get home.</p>
+                        <p>My service costs you nothing - I'm paid by the travel suppliers, not by you. Every booking comes with full ATOL and ABTA financial protection, so your money is safe and your holiday is guaranteed.</p>
 
-                    <!-- Hotels & Resorts -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <div class="brand-values">
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Completely free to use
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Financially protected
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Access to exclusive rates
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Here before, during & after
+                            </div>
                         </div>
-                        <h3>Hotels & Resorts</h3>
-                        <p>From boutique B&Bs to five-star luxury resorts. I have access to exclusive rates and upgrades you won't find online.</p>
-                    </div>
 
-                    <!-- Adventures & Tours -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
-                        </div>
-                        <h3>Adventures & Tours</h3>
-                        <p>Guided tours, safaris, hiking treks, and unique experiences. Let me plan an adventure you'll never forget.</p>
-                    </div>
-
-                    <!-- Cruises -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                        </div>
-                        <h3>Cruises</h3>
-                        <p>River cruises, ocean voyages, and expedition sailings. Access every major cruise line with expert advice.</p>
-                    </div>
-
-                    <!-- Flights -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                        </div>
-                        <h3>Flights</h3>
-                        <p>Competitive flight prices worldwide. Economy to first class, short-haul to long-haul - I'll find your best route.</p>
-                    </div>
-
-                    <!-- Bespoke Travel -->
-                    <div class="service-card" role="listitem">
-                        <div class="service-icon" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                        </div>
-                        <h3>Bespoke Travel</h3>
-                        <p>Got a special request? Weddings abroad, group trips, corporate travel - I'll make it happen exactly how you envision.</p>
+                        <a href="https://www.instagram.com/ariella.escapes/" class="brand-ig-link" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                            Follow @ariella.escapes
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Destinations Section -->
-        <section class="section destinations" id="destinations" aria-labelledby="destinations-heading">
+        <!-- Services -->
+        <section class="section services" id="services" aria-labelledby="services-heading">
             <div class="section-inner">
                 <div class="section-header">
-                    <div class="section-label">Popular Destinations</div>
-                    <h2 class="section-title" id="destinations-heading">Where Will You Escape To?</h2>
-                    <p class="section-desc">From sun-drenched beaches to snow-capped mountains, the world is waiting. Here are some favourite escapes.</p>
+                    <div class="section-eyebrow">What I Can Book For You</div>
+                    <h2 class="section-title" id="services-heading">Whatever You're Dreaming Of</h2>
+                    <p class="section-subtitle">I have access to every major travel supplier in the world - from big-name resorts to hidden gems. If it involves travel, I can sort it.</p>
                 </div>
+                <div class="services-grid" role="list">
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3>Package Holidays</h3>
+                        <p>All-inclusive, half-board, self-catering - for couples, families, and groups. ATOL protected and often cheaper than booking direct.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <h3>Hotels & Resorts</h3>
+                        <p>From boutique hideaways to five-star luxury. I can access rates and room upgrades you won't find on comparison sites.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h3>Adventures & Tours</h3>
+                        <p>Safaris, treks, food tours, cultural excursions - whatever lights you up. I'll find experiences that go beyond the guidebook.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <h3>Cruises</h3>
+                        <p>Ocean, river, or expedition - every major cruise line at your fingertips. I'll match you to the perfect ship and itinerary.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </div>
+                        <h3>Flights</h3>
+                        <p>Economy to first class, worldwide. I'll find the best routes, prices, and connections so you can travel smarter.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <h3>Bespoke Trips</h3>
+                        <p>Honeymoons, weddings abroad, milestone birthdays, group trips - tell me the occasion and I'll create something unforgettable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Destinations -->
+        <section class="section destinations" id="destinations" aria-labelledby="dest-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">Inspiration</div>
+                    <h2 class="section-title" id="dest-heading">Where Will You Escape To?</h2>
+                    <p class="section-subtitle">These are just a taste. I can book anywhere in the world - just ask.</p>
+                </div>
                 <div class="destinations-grid">
                     <div class="destination-card">
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80"
-                             alt="Luxury resort with infinity pool overlooking the ocean in the Maldives"
+                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600&q=80"
+                             alt="Overwater bungalows in the Maldives with crystal clear water"
                              loading="lazy">
-                        <div class="destination-overlay">
-                            <h3>Maldives</h3>
-                            <p>Luxury overwater villas</p>
-                        </div>
+                        <div class="dest-overlay"><h3>Maldives</h3><p>Overwater luxury</p></div>
                     </div>
-
                     <div class="destination-card">
-                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80"
-                             alt="Crystal clear lake surrounded by mountains and forests in Europe"
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80"
+                             alt="White and blue buildings of Santorini Greece overlooking the sea"
                              loading="lazy">
-                        <div class="destination-overlay">
-                            <h3>Europe</h3>
-                            <p>City breaks & culture</p>
-                        </div>
+                        <div class="dest-overlay"><h3>Greece</h3><p>Island hopping</p></div>
                     </div>
-
                     <div class="destination-card">
-                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80"
-                             alt="Dramatic mountain landscape with lake at sunset"
+                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=600&q=80"
+                             alt="Tropical beach with palm trees and turquoise water"
                              loading="lazy">
-                        <div class="destination-overlay">
-                            <h3>Southeast Asia</h3>
-                            <p>Adventure & discovery</p>
-                        </div>
+                        <div class="dest-overlay"><h3>Caribbean</h3><p>All-inclusive paradise</p></div>
                     </div>
-
                     <div class="destination-card">
-                        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=600&q=80"
-                             alt="Turquoise Caribbean sea with tropical island and palm trees"
+                        <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&w=600&q=80"
+                             alt="Dramatic mountainous coastline of Southeast Asia"
                              loading="lazy">
-                        <div class="destination-overlay">
-                            <h3>Caribbean</h3>
-                            <p>Sun, sand & all-inclusive</p>
+                        <div class="dest-overlay"><h3>Southeast Asia</h3><p>Adventure awaits</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80"
+                             alt="Dubai skyline at sunset with modern skyscrapers"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Dubai</h3><p>City & sun</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=600&q=80"
+                             alt="Golden sunset over a Turkish resort with pools and palm trees"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Turkey</h3><p>Family favourites</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Ariella -->
+        <section class="section why-section" aria-labelledby="why-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">Why Book With Me</div>
+                    <h2 class="section-title" id="why-heading">What Makes Ariella Escapes Different</h2>
+                    <p class="section-subtitle">You could book online. But here's why people choose not to.</p>
+                </div>
+                <div class="why-grid" role="list">
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
                         </div>
+                        <h3>A Real Person, Not a Search Engine</h3>
+                        <p>You message me, I reply. No chatbots, no call centres, no waiting on hold. Just honest, human advice from someone who genuinely wants your trip to be incredible.</p>
+                    </div>
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3>It Won't Cost You a Penny</h3>
+                        <p>My service is completely free. I earn commission from the travel suppliers - the same price you'd pay online, often less, always with better support.</p>
+                    </div>
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3>Your Money Is Protected</h3>
+                        <p>Every package holiday I book is ATOL protected and backed by ABTA. If anything goes wrong, you're covered - that's something booking direct often can't guarantee.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works -->
-        <section class="section how-it-works" aria-labelledby="how-heading">
+        <section class="section process" aria-labelledby="process-heading">
             <div class="section-inner">
                 <div class="section-header">
-                    <div class="section-label">How It Works</div>
-                    <h2 class="section-title" id="how-heading">Booking Made Simple</h2>
-                    <p class="section-desc">No trawling through comparison sites. No hidden fees. Just a personal service from start to finish.</p>
+                    <div class="section-eyebrow">How It Works</div>
+                    <h2 class="section-title" id="process-heading">Four Steps to Your Dream Holiday</h2>
+                    <p class="section-subtitle">It's as simple as sending a message. I handle everything else.</p>
                 </div>
-
-                <div class="steps-grid" role="list">
-                    <div class="step-card" role="listitem">
-                        <div class="step-number" aria-hidden="true">1</div>
-                        <h3>Tell Me Your Dreams</h3>
-                        <p>Get in touch and tell me where you want to go, your budget, and what matters most to you.</p>
+                <div class="process-track" role="list">
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">1</div>
+                        <h3>Get in Touch</h3>
+                        <p>Send me a message on Instagram or through my booking site. Tell me where you fancy, when, and your budget.</p>
                     </div>
-                    <div class="step-card" role="listitem">
-                        <div class="step-number" aria-hidden="true">2</div>
-                        <h3>I'll Do the Research</h3>
-                        <p>I search through thousands of options to find the best deals and experiences, tailored to you.</p>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">2</div>
+                        <h3>I Do the Legwork</h3>
+                        <p>I search thousands of options across every major supplier to find the best fit at the best price.</p>
                     </div>
-                    <div class="step-card" role="listitem">
-                        <div class="step-number" aria-hidden="true">3</div>
-                        <h3>Choose & Book</h3>
-                        <p>Pick your perfect trip. I'll handle all the bookings, transfers, and details so you don't have to.</p>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">3</div>
+                        <h3>You Choose</h3>
+                        <p>I present my top picks. You choose the one that feels right. No pressure, no rush.</p>
                     </div>
-                    <div class="step-card" role="listitem">
-                        <div class="step-number" aria-hidden="true">4</div>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">4</div>
                         <h3>Escape & Enjoy</h3>
-                        <p>Relax and enjoy your holiday knowing I'm here if you need anything, before and during your trip.</p>
+                        <p>I handle all the bookings and details. You just pack your bags and go.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="section about" id="about" aria-labelledby="about-heading">
+        <!-- Instagram Section -->
+        <section class="section ig-section" aria-labelledby="ig-heading">
             <div class="section-inner">
-                <div class="about-grid">
-                    <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80"
-                             alt="Road leading towards mountains at sunset, representing the journey of travel"
-                             loading="lazy">
+                <div class="ig-header">
+                    <div class="ig-handle" id="ig-heading">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        @ariella.escapes
                     </div>
-                    <div class="about-content">
-                        <div class="section-label">About Me</div>
-                        <h2 id="about-heading">Hi, I'm Ariella</h2>
-                        <p>I'm an independent travel agent with a genuine passion for helping people find their perfect escape. Whether it's a relaxing beach holiday, a once-in-a-lifetime adventure, or a romantic getaway, I love making dream trips a reality.</p>
-                        <p>As your personal travel agent, I offer a service you simply can't get from booking online. I take the time to understand what you want, search for the best deals, and handle every detail so you can just look forward to your holiday.</p>
-                        <p>My service is completely free to use - I earn commission from the travel suppliers, not from you. And all bookings come with full ATOL and ABTA protection for your peace of mind.</p>
-
-                        <div class="about-highlights">
-                            <div class="about-highlight">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                Free, personal service
-                            </div>
-                            <div class="about-highlight">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                ATOL & ABTA protected
-                            </div>
-                            <div class="about-highlight">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                Exclusive deals & rates
-                            </div>
-                            <div class="about-highlight">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                                Available 7 days a week
-                            </div>
-                        </div>
-                    </div>
+                    <p class="ig-tagline">Follow along for travel inspiration, deals, and destination tips</p>
+                </div>
+                <div class="ig-grid">
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - beach sunset">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Tropical beach at sunset with golden sky" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - infinity pool">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80" alt="Luxury resort infinity pool with ocean view" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - mountain lake">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=400&q=80" alt="Serene mountain lake surrounded by forest" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - Santorini">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=400&q=80" alt="Santorini blue domed church with sea view" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                </div>
+                <div class="ig-follow">
+                    <a href="https://www.instagram.com/ariella.escapes/" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        Follow @ariella.escapes
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials Preview -->
-        <section class="section testimonials-preview" aria-labelledby="testimonials-heading">
-            <div class="section-inner">
-                <div class="section-header">
-                    <div class="section-label">Happy Travellers</div>
-                    <h2 class="section-title" id="testimonials-heading">What My Clients Say</h2>
-                    <p class="section-desc">Don't just take my word for it - hear from people who've booked their dream holidays through Ariella Escapes.</p>
-                </div>
-
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <blockquote>"Ariella made our honeymoon absolutely magical. She found us an incredible deal on an overwater villa that we never would have found ourselves. Every detail was perfect."</blockquote>
-                        <div class="testimonial-author">Sophie & James</div>
-                        <div class="testimonial-trip">Honeymoon in the Maldives</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <blockquote>"Booking a family holiday with three kids can be a nightmare. Ariella took over, found us the perfect all-inclusive resort, and saved us hundreds compared to what I'd found online."</blockquote>
-                        <div class="testimonial-author">Rachel T.</div>
-                        <div class="testimonial-trip">Family holiday in Turkey</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                        <blockquote>"I'd never used a travel agent before but Ariella has completely changed how I book holidays. The personal touch makes all the difference. I won't go back to doing it myself!"</blockquote>
-                        <div class="testimonial-author">Mark D.</div>
-                        <div class="testimonial-trip">Adventure trip to Thailand</div>
-                    </div>
-                </div>
-
-                <div class="testimonials-cta">
-                    <a href="reviews.html" class="btn btn-teal">Read All Reviews</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
+        <!-- CTA -->
         <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="cta-bg">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80"
+                     alt="Dramatic mountain landscape at golden hour" loading="lazy">
+            </div>
+            <div class="cta-overlay" aria-hidden="true"></div>
             <div class="section-inner">
-                <h2 id="cta-heading">Ready to Plan Your Next Escape?</h2>
-                <p>Get in touch today for a free, no-obligation quote. Let's find your perfect holiday together.</p>
-                <div class="hero-buttons">
-                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Online Now</a>
-                    <a href="https://www.instagram.com/arielle.escapes/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+                <h2 id="cta-heading">Let's Plan Your Next Escape</h2>
+                <p>Send me a message and let's get started. No commitment, no fees - just a friendly chat about where you want to go.</p>
+                <div class="cta-btns">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-white" target="_blank" rel="noopener noreferrer">Book Online</a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="btn btn-glass" target="_blank" rel="noopener noreferrer">Message on Instagram</a>
                 </div>
             </div>
         </section>
@@ -1365,48 +976,40 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand">Ariella <span>Escapes</span></div>
-                    <p class="footer-desc">Your independent travel agent, dedicated to finding you the perfect getaway. Free personal service with full financial protection on every booking.</p>
+                    <p class="footer-desc">Your independent travel agent. Personal service, expert knowledge, and full financial protection on every booking. It's free - so why wouldn't you?</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/arielle.escapes/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow Ariella Escapes on Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <rect x="2" y="2" width="20" height="20" rx="5"/>
-                                <circle cx="12" cy="12" r="5"/>
-                                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-                            </svg>
+                        <a href="https://www.instagram.com/ariella.escapes/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow Ariella Escapes on Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
                         </a>
                     </div>
                 </div>
-
                 <div>
-                    <h4>Quick Links</h4>
+                    <h4>Explore</h4>
                     <ul class="footer-links" role="list">
                         <li><a href="ariella.html">Home</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#destinations">Destinations</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#about">About Ariella</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4>Services</h4>
+                    <h4>I Can Book</h4>
                     <ul class="footer-links" role="list">
                         <li><a href="#services">Package Holidays</a></li>
                         <li><a href="#services">Hotels & Resorts</a></li>
                         <li><a href="#services">Cruises</a></li>
-                        <li><a href="#services">Adventures & Tours</a></li>
+                        <li><a href="#services">Flights & More</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4>Helpful</h4>
+                    <h4>Get Started</h4>
                     <ul class="footer-links" role="list">
                         <li><a href="reviews.html">Client Reviews</a></li>
                         <li><a href="https://ariellamandell.inteletravel.uk" target="_blank" rel="noopener noreferrer">Book Online</a></li>
-                        <li><a href="https://www.instagram.com/arielle.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://www.instagram.com/ariella.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>&copy; 2025 Ariella Escapes. All rights reserved.</p>
                 <div class="footer-protection">
@@ -1417,36 +1020,22 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Mobile navigation toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-links');
-
+        var navToggle = document.querySelector('.nav-toggle');
+        var navMenu = document.querySelector('.nav-links');
         navToggle.addEventListener('click', function() {
-            const isOpen = navMenu.classList.toggle('open');
+            var isOpen = navMenu.classList.toggle('open');
             navToggle.setAttribute('aria-expanded', isOpen);
         });
-
-        // Close mobile menu when a link is clicked
         navMenu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('open');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
-
-        // Add shadow to nav on scroll
-        var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 10) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
         });
-
-        // Close mobile menu on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && navMenu.classList.contains('open')) {
                 navMenu.classList.remove('open');
@@ -1455,6 +1044,5 @@
             }
         });
     </script>
-
 </body>
 </html>

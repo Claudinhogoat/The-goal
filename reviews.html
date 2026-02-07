@@ -3,654 +3,382 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Client reviews for Ariella Escapes - Read what happy travellers have to say about their holiday booking experience.">
+    <meta name="description" content="Reviews and testimonials for Ariella Escapes - Hear from real clients about their travel booking experience.">
     <title>Reviews | Ariella Escapes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           CSS CUSTOM PROPERTIES
-           ============================================ */
         :root {
-            --color-primary: #0d7377;
-            --color-primary-dark: #095456;
-            --color-primary-light: #e6f4f4;
-            --color-secondary: #c4704f;
-            --color-secondary-light: #f8ece6;
-            --color-accent: #c9a96e;
-            --color-accent-light: #f5eddf;
-            --color-bg: #faf7f2;
+            --color-primary: #1a6b5a;
+            --color-primary-dark: #145548;
+            --color-primary-light: #e8f3f0;
+            --color-warm: #c97b4b;
+            --color-warm-dark: #a8623a;
+            --color-warm-light: #faf0e8;
+            --color-gold: #b8965a;
+            --color-bg: #faf8f5;
+            --color-bg-warm: #f5f0ea;
             --color-bg-white: #ffffff;
-            --color-text: #1a1a2e;
-            --color-text-light: #555566;
-            --color-text-muted: #7a7a8c;
-            --color-border: #e8e4de;
-            --font-heading: 'Georgia', 'Times New Roman', serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
-            --radius: 12px;
-            --max-width: 1200px;
+            --color-text: #1c1c28;
+            --color-text-mid: #444455;
+            --color-text-light: #6b6b7b;
+            --color-text-muted: #999;
+            --color-border: #e6e1da;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --max-width: 1160px;
             --transition: 0.3s ease;
         }
 
-        /* ============================================
-           RESET & BASE
-           ============================================ */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font-body);
-            line-height: 1.7;
-            color: var(--color-text);
-            background: var(--color-bg);
-            -webkit-font-smoothing: antialiased;
+            font-family: var(--font-body); line-height: 1.7;
+            color: var(--color-text); background: var(--color-bg);
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: var(--color-primary); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--color-primary-dark); }
+        a:focus-visible, button:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
 
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        a:hover {
-            color: var(--color-primary-dark);
-        }
-
-        a:focus-visible,
-        button:focus-visible {
-            outline: 3px solid var(--color-primary);
-            outline-offset: 2px;
-        }
-
-        /* ============================================
-           SKIP LINK
-           ============================================ */
         .skip-link {
-            position: absolute;
-            top: -100%;
-            left: 1rem;
-            background: var(--color-primary);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0 0 var(--radius) var(--radius);
-            z-index: 10000;
-            font-weight: 600;
-            transition: top var(--transition);
+            position: absolute; top: -100%; left: 1rem;
+            background: var(--color-primary); color: #fff;
+            padding: 0.75rem 1.5rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            z-index: 10000; font-weight: 600;
         }
+        .skip-link:focus { top: 0; }
 
-        .skip-link:focus {
-            top: 0;
-        }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
+        /* ── NAV ── */
         .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--color-border);
-            transition: box-shadow var(--transition);
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06);
         }
-
-        .nav.scrolled {
-            box-shadow: var(--shadow-sm);
-        }
-
+        .nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
         .nav-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 72px;
+            max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center; height: 70px;
         }
-
         .nav-logo {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-family: var(--font-display); font-size: 1.45rem;
+            color: var(--color-text); font-weight: 700;
         }
-
-        .nav-logo span {
-            color: var(--color-secondary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
+        .nav-logo span { color: var(--color-primary); font-style: italic; font-weight: 500; }
+        .nav-links { display: flex; list-style: none; gap: 1.75rem; align-items: center; }
         .nav-links a {
-            color: var(--color-text);
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
+            color: var(--color-text-mid); font-size: 0.9rem; font-weight: 500;
+            padding: 0.4rem 0; position: relative;
         }
-
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 2px; background: var(--color-primary);
             transition: width var(--transition);
         }
-
-        .nav-links a:hover::after,
-        .nav-links a[aria-current="page"]::after {
-            width: 100%;
-        }
-
+        .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { width: 100%; }
+        .nav-links a:hover { color: var(--color-text); }
         .nav-cta {
-            background: var(--color-primary) !important;
-            color: #fff !important;
-            padding: 0.6rem 1.4rem !important;
-            border-radius: 50px;
-            font-weight: 600 !important;
+            background: var(--color-primary) !important; color: #fff !important;
+            padding: 0.55rem 1.3rem !important; border-radius: 50px;
+            font-weight: 600 !important; font-size: 0.85rem !important;
         }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--color-primary-dark) !important;
-            color: #fff !important;
-        }
-
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--color-primary-dark) !important; color: #fff !important; }
         .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: var(--color-text);
+            display: none; background: none; border: none;
+            cursor: pointer; padding: 0.5rem; color: var(--color-text);
         }
+        .nav-toggle svg { width: 26px; height: 26px; }
 
-        .nav-toggle svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        /* ============================================
-           PAGE HEADER
-           ============================================ */
+        /* ── PAGE HEADER ── */
         .page-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            color: #fff;
+            position: relative; padding: 9rem 2rem 4.5rem; text-align: center;
+            color: #fff; overflow: hidden;
         }
-
+        .page-header-bg { position: absolute; inset: 0; z-index: -2; }
+        .page-header-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .page-header-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(160deg, rgba(26,107,90,0.8) 0%, rgba(20,85,72,0.7) 50%, rgba(28,28,40,0.6) 100%);
+        }
         .page-header h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 0.75rem;
-            font-weight: 700;
+            font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem);
+            margin-bottom: 0.75rem; font-weight: 700;
         }
-
         .page-header p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.85);
-            max-width: 550px;
-            margin: 0 auto;
+            font-size: 1.15rem; color: rgba(255,255,255,0.85);
+            max-width: 520px; margin: 0 auto; font-weight: 300;
         }
 
-        /* ============================================
-           REVIEW STATS BAR
-           ============================================ */
-        .stats-bar {
-            background: var(--color-bg-white);
+        /* ── REVIEWS INTRO ── */
+        .reviews-intro {
+            background: var(--color-bg-white); padding: 4rem 2rem;
             border-bottom: 1px solid var(--color-border);
-            padding: 2rem;
         }
-
-        .stats-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            flex-wrap: wrap;
+        .reviews-intro-inner {
+            max-width: 700px; margin: 0 auto; text-align: center;
         }
-
-        .stat-item {
-            text-align: center;
+        .reviews-intro h2 {
+            font-family: var(--font-display); font-size: 1.8rem;
+            color: var(--color-text); margin-bottom: 1rem;
         }
-
-        .stat-number {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            font-weight: 500;
-        }
-
-        .stat-stars {
-            color: var(--color-accent);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        /* ============================================
-           REVIEWS SECTION
-           ============================================ */
-        .reviews-section {
-            padding: 4rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .review-card {
-            background: var(--color-bg-white);
-            border-radius: var(--radius);
-            padding: 2rem 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-            transition: box-shadow var(--transition);
-        }
-
-        .review-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .review-author-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .review-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--color-primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-family: var(--font-heading);
-            font-size: 1.2rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .review-name {
-            font-weight: 700;
-            color: var(--color-text);
-            font-size: 1rem;
-        }
-
-        .review-trip {
-            color: var(--color-text-muted);
-            font-size: 0.85rem;
-            margin-top: 0.15rem;
-        }
-
-        .review-stars {
-            color: var(--color-accent);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        .review-body {
-            font-size: 1rem;
-            color: var(--color-text-light);
-            line-height: 1.75;
+        .reviews-intro p {
+            font-size: 1.05rem; color: var(--color-text-light); line-height: 1.8;
             margin-bottom: 1rem;
         }
+        .reviews-intro p:last-of-type { margin-bottom: 0; }
 
-        .review-date {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
+        /* ── SHARE YOUR EXPERIENCE ── */
+        .share-section {
+            background: var(--color-bg); padding: 5rem 2rem;
+        }
+        .share-inner {
+            max-width: 800px; margin: 0 auto;
+        }
+        .share-header {
+            text-align: center; margin-bottom: 3rem;
+        }
+        .share-eyebrow {
+            display: inline-block; color: var(--color-primary); font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .share-header h2 {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--color-text); margin-bottom: 0.75rem;
+        }
+        .share-header p {
+            font-size: 1rem; color: var(--color-text-light); max-width: 500px;
+            margin: 0 auto; line-height: 1.7;
         }
 
-        .review-tag {
-            display: inline-block;
-            background: var(--color-primary-light);
-            color: var(--color-primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
+        .share-options {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        }
+
+        .share-card {
+            background: var(--color-bg-white); border-radius: var(--radius);
+            padding: 2.5rem 2rem; text-align: center;
+            border: 1px solid var(--color-border); transition: all var(--transition);
+        }
+        .share-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+
+        .share-icon {
+            width: 56px; height: 56px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem;
+        }
+        .share-icon svg { width: 28px; height: 28px; }
+
+        .share-icon-ig { background: var(--color-warm-light); color: var(--color-warm); }
+        .share-icon-web { background: var(--color-primary-light); color: var(--color-primary); }
+
+        .share-card h3 {
+            font-family: var(--font-display); font-size: 1.15rem;
+            color: var(--color-text); margin-bottom: 0.5rem;
+        }
+        .share-card p {
+            color: var(--color-text-light); font-size: 0.9rem;
+            line-height: 1.7; margin-bottom: 1.25rem;
+        }
+
+        .share-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-weight: 600; font-size: 0.9rem; color: var(--color-primary);
+        }
+        .share-link svg { width: 16px; height: 16px; }
+        .share-link:hover { color: var(--color-primary-dark); }
+
+        /* ── WHAT TO EXPECT ── */
+        .expect-section {
+            background: var(--color-primary); color: #fff; padding: 5rem 2rem;
+        }
+        .expect-inner {
+            max-width: var(--max-width); margin: 0 auto;
+        }
+        .expect-header {
+            text-align: center; margin-bottom: 3rem;
+        }
+        .expect-eyebrow {
+            display: inline-block; color: var(--color-gold); font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .expect-header h2 {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            margin-bottom: 0.75rem;
+        }
+        .expect-header p {
+            font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .expect-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        .expect-card {
+            text-align: center; padding: 1.5rem 1rem;
+        }
+        .expect-icon {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .expect-icon svg { width: 26px; height: 26px; color: var(--color-gold); }
+        .expect-card h3 {
+            font-family: var(--font-display); font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
-
-        .review-tags {
-            margin-bottom: 1rem;
+        .expect-card p {
+            color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.7;
         }
 
-        /* ============================================
-           CTA SECTION
-           ============================================ */
+        /* ── CTA ── */
         .cta-section {
-            background: linear-gradient(135deg, var(--color-secondary) 0%, #b56343 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: #fff;
+            position: relative; padding: 6rem 2rem; text-align: center;
+            color: #fff; overflow: hidden;
         }
-
+        .cta-bg { position: absolute; inset: 0; z-index: -2; }
+        .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .cta-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(135deg, rgba(201,123,75,0.85) 0%, rgba(168,98,58,0.9) 100%);
+        }
         .cta-section h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.8rem);
             margin-bottom: 1rem;
         }
-
         .cta-section p {
-            font-size: 1.15rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem; color: rgba(255,255,255,0.9);
+            margin-bottom: 2.25rem; max-width: 520px; margin-left: auto;
+            margin-right: auto; font-weight: 300;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all var(--transition);
-            border: 2px solid transparent;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.9rem; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            transition: all var(--transition); border: 2px solid transparent;
             cursor: pointer;
         }
-
-        .btn-primary {
-            background: var(--color-secondary);
-            color: #fff;
-            border-color: var(--color-secondary);
-        }
-
-        .btn-primary:hover {
-            background: #b56343;
-            border-color: #b56343;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(196, 112, 79, 0.4);
-        }
+        .btn svg { width: 18px; height: 18px; }
 
         .btn-white {
-            background: #fff;
-            color: var(--color-secondary);
-            border-color: #fff;
+            background: #fff; color: var(--color-warm); border-color: #fff;
         }
-
         .btn-white:hover {
-            background: rgba(255,255,255,0.9);
-            color: #b56343;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.92); color: var(--color-warm-dark);
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.25);
+        }
+        .btn-glass {
+            background: rgba(255,255,255,0.12); color: #fff;
+            border-color: rgba(255,255,255,0.35);
+        }
+        .btn-glass:hover {
+            background: rgba(255,255,255,0.22); border-color: #fff;
+            color: #fff; transform: translateY(-2px);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border-color: rgba(255,255,255,0.5);
-        }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: #fff;
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
+        /* ── FOOTER ── */
         .footer {
-            background: var(--color-text);
-            color: rgba(255,255,255,0.7);
-            padding: 3rem 2rem;
+            background: #1c1c28; color: rgba(255,255,255,0.65); padding: 3rem 2rem;
             text-align: center;
         }
-
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; }
         .footer-brand {
-            font-family: var(--font-heading);
-            font-size: 1.3rem;
-            color: #fff;
+            font-family: var(--font-display); font-size: 1.3rem; color: #fff;
             margin-bottom: 0.5rem;
         }
-
-        .footer-brand span {
-            color: var(--color-accent);
-        }
-
+        .footer-brand span { color: var(--color-primary); font-style: italic; font-weight: 500; }
         .footer-desc {
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 0.85rem; margin-bottom: 1.5rem;
+            max-width: 450px; margin-left: auto; margin-right: auto;
         }
-
         .footer-links-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            display: flex; justify-content: center; gap: 2rem;
+            flex-wrap: wrap; margin-bottom: 1.5rem;
         }
-
-        .footer-links-row a {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            transition: color var(--transition);
-        }
-
-        .footer-links-row a:hover {
-            color: #fff;
-        }
-
+        .footer-links-row a { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+        .footer-links-row a:hover { color: #fff; }
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem; font-size: 0.8rem;
         }
+        .footer-protection { display: flex; align-items: center; gap: 0.5rem; }
+        .footer-protection svg { width: 15px; height: 15px; color: var(--color-gold); }
 
-        .footer-protection {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-protection svg {
-            width: 16px;
-            height: 16px;
-            color: var(--color-accent);
-        }
-
-        /* ============================================
-           MOBILE RESPONSIVE
-           ============================================ */
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-
+            .nav-toggle { display: block; }
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 72px;
-                left: 0;
-                right: 0;
-                background: rgba(255,255,255,0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 1.5rem 2rem;
-                gap: 0;
-                border-bottom: 1px solid var(--color-border);
-                box-shadow: var(--shadow-md);
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+                flex-direction: column; padding: 1rem 2rem;
+                border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-md);
             }
+            .nav-links.open { display: flex; }
+            .nav-links li { border-bottom: 1px solid var(--color-border); }
+            .nav-links li:last-child { border-bottom: none; margin-top: 0.5rem; }
+            .nav-links a { display: block; padding: 0.85rem 0; }
 
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links li {
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
-                margin-top: 0.5rem;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.9rem 0;
-            }
-
-            .stats-inner {
-                gap: 2rem;
-            }
-
-            .review-card {
-                padding: 1.5rem;
-            }
-
-            .review-header {
-                flex-direction: column;
-            }
+            .share-options { grid-template-columns: 1fr; }
+            .expect-grid { grid-template-columns: 1fr; gap: 1.5rem; }
         }
 
         @media (max-width: 480px) {
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                max-width: 300px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+            .cta-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; max-width: 300px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
 
-        /* ============================================
-           REDUCED MOTION
-           ============================================ */
         @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
+            html { scroll-behavior: auto; }
             *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
             }
         }
 
         @media (forced-colors: active) {
-            .btn {
-                border: 2px solid ButtonText;
-            }
-
-            .review-card {
-                border: 1px solid ButtonText;
-            }
+            .btn { border: 2px solid ButtonText; }
+            .share-card { border: 1px solid ButtonText; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Skip Navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Navigation -->
+    <!-- Nav -->
     <header>
-        <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+        <nav class="nav" id="navbar" aria-label="Main navigation">
             <div class="nav-inner">
                 <a href="ariella.html" class="nav-logo" aria-label="Ariella Escapes - Home">
                     Ariella <span>Escapes</span>
                 </a>
-
                 <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
-
                 <ul class="nav-links" id="nav-menu" role="list">
                     <li><a href="ariella.html">Home</a></li>
                     <li><a href="ariella.html#services">Services</a></li>
                     <li><a href="ariella.html#destinations">Destinations</a></li>
-                    <li><a href="ariella.html#about">About</a></li>
+                    <li><a href="ariella.html#about">About Ariella</a></li>
                     <li><a href="reviews.html" aria-current="page">Reviews</a></li>
                     <li><a href="https://ariellamandell.inteletravel.uk" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
                 </ul>
@@ -658,213 +386,114 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main id="main-content">
 
         <!-- Page Header -->
         <section class="page-header" aria-label="Page title">
-            <h1>Client Reviews</h1>
-            <p>Real stories from real travellers who booked their dream holidays through Ariella Escapes.</p>
+            <div class="page-header-bg">
+                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1920&q=80"
+                     alt="Open road leading towards mountains at sunset"
+                     loading="eager" fetchpriority="high">
+            </div>
+            <div class="page-header-overlay" aria-hidden="true"></div>
+            <h1>Reviews</h1>
+            <p>Hear from real people who've booked with Ariella Escapes.</p>
         </section>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar" role="region" aria-label="Review statistics">
-            <div class="stats-inner">
-                <div class="stat-item">
-                    <span class="stat-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                    <span class="stat-label">Average Rating</span>
+        <!-- Reviews Intro -->
+        <section class="reviews-intro" aria-labelledby="intro-heading">
+            <div class="reviews-intro-inner">
+                <h2 id="intro-heading">Real Experiences, Real People</h2>
+                <p>I believe the best way to know if a service is right for you is to hear from people who've already used it. That's why I don't put fake reviews on my website.</p>
+                <p>If you've booked a holiday through Ariella Escapes, I'd genuinely love to hear how it went. Your feedback helps me improve and helps future travellers feel confident about booking with me.</p>
+                <p>If you haven't booked yet but want to know what working with me is like, drop me a message on <a href="https://www.instagram.com/ariella.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a> - I'm always happy to chat, no commitment needed.</p>
+            </div>
+        </section>
+
+        <!-- Share Your Experience -->
+        <section class="share-section" aria-labelledby="share-heading">
+            <div class="share-inner">
+                <div class="share-header">
+                    <div class="share-eyebrow">Been on a Trip?</div>
+                    <h2 id="share-heading">Share Your Experience</h2>
+                    <p>If you've booked with me, I'd love to hear about your trip. Here's how you can share your experience.</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Would Recommend</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5&#9733;</span>
-                    <span class="stat-label">Service Rating</span>
+
+                <div class="share-options">
+                    <div class="share-card">
+                        <div class="share-icon share-icon-ig" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </div>
+                        <h3>Tag Me on Instagram</h3>
+                        <p>Share your holiday photos and tag <strong>@ariella.escapes</strong> or send me a DM with your feedback. I'd love to share your stories.</p>
+                        <a href="https://www.instagram.com/ariella.escapes/" class="share-link" target="_blank" rel="noopener noreferrer">
+                            @ariella.escapes
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
+
+                    <div class="share-card">
+                        <div class="share-icon share-icon-web" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        </div>
+                        <h3>Send Me a Message</h3>
+                        <p>Get in touch through my booking site and let me know how your trip went. With your permission, I'll add your review here.</p>
+                        <a href="https://ariellamandell.inteletravel.uk" class="share-link" target="_blank" rel="noopener noreferrer">
+                            Get in touch
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Reviews -->
-        <section class="reviews-section" aria-label="Customer reviews">
-
-            <!-- Review 1 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">S</div>
-                        <div>
-                            <div class="review-name">Sophie & James</div>
-                            <div class="review-trip">Honeymoon - Maldives</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Honeymoon</span>
-                    <span class="review-tag">Luxury</span>
-                    <span class="review-tag">Maldives</span>
-                </div>
-                <p class="review-body">Ariella made our honeymoon absolutely magical. From the moment we reached out, she understood exactly what we wanted. She found us an incredible overwater villa at a fraction of what we'd seen online, organised our seaplane transfers, and even arranged a surprise dinner on the beach. Every single detail was thought of. We genuinely didn't have to worry about a thing - which is exactly what you want on your honeymoon. We can't recommend her highly enough and will definitely be booking through Ariella again.</p>
-                <div class="review-date">December 2024</div>
-            </article>
-
-            <!-- Review 2 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">R</div>
-                        <div>
-                            <div class="review-name">Rachel T.</div>
-                            <div class="review-trip">Family Holiday - Turkey</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Family</span>
-                    <span class="review-tag">All-Inclusive</span>
-                    <span class="review-tag">Turkey</span>
-                </div>
-                <p class="review-body">Booking a family holiday with three kids is always stressful - there are so many things to consider. Ariella took over completely and found us the most perfect all-inclusive resort in Turkey. It had a kids' club, water slides, and was right on the beach. She even saved us a few hundred pounds compared to the price I'd found myself online! The whole experience from first message to coming home was seamless. She checked in on us during the trip too, which was such a lovely touch.</p>
-                <div class="review-date">October 2024</div>
-            </article>
-
-            <!-- Review 3 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">M</div>
-                        <div>
-                            <div class="review-name">Mark D.</div>
-                            <div class="review-trip">Adventure Trip - Thailand</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Adventure</span>
-                    <span class="review-tag">Thailand</span>
-                    <span class="review-tag">Solo Travel</span>
-                </div>
-                <p class="review-body">I've always booked holidays myself but decided to try a travel agent for my Thailand trip as I wanted to do something a bit different. Ariella put together an incredible itinerary - Bangkok, Chiang Mai, and then down to the islands. She booked internal flights, hotels, and even a cooking class and elephant sanctuary visit. The whole thing was so well planned and I didn't have to spend hours researching. I'm a complete convert now - won't go back to doing it myself!</p>
-                <div class="review-date">September 2024</div>
-            </article>
-
-            <!-- Review 4 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">L</div>
-                        <div>
-                            <div class="review-name">Lauren & Chris</div>
-                            <div class="review-trip">Couples Getaway - Santorini</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Couples</span>
-                    <span class="review-tag">Romantic</span>
-                    <span class="review-tag">Greece</span>
-                </div>
-                <p class="review-body">We wanted a special trip to celebrate our anniversary and Ariella delivered beyond our expectations. She found a gorgeous boutique hotel in Oia with caldera views, arranged airport transfers, and recommended the best restaurants and sunset spots. She really listened to what we wanted - something romantic but not too stuffy. The price was great too. Ariella has such a warm, friendly approach and genuinely cares about making your holiday perfect.</p>
-                <div class="review-date">August 2024</div>
-            </article>
-
-            <!-- Review 5 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">J</div>
-                        <div>
-                            <div class="review-name">Jenny M.</div>
-                            <div class="review-trip">Girls' Trip - Dubai</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Group Trip</span>
-                    <span class="review-tag">Dubai</span>
-                    <span class="review-tag">Luxury</span>
-                </div>
-                <p class="review-body">Organising a girls' trip for 6 people is a logistical nightmare. Different budgets, different preferences - it's impossible to please everyone. Ariella somehow managed it! She found a stunning hotel with a rooftop pool, booked a desert safari for the group, and got us an amazing deal that worked within everyone's budget. She was so patient with all the back-and-forth messages and changes. Absolute star - we're already planning next year's trip with her!</p>
-                <div class="review-date">July 2024</div>
-            </article>
-
-            <!-- Review 6 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">D</div>
-                        <div>
-                            <div class="review-name">David & Sarah P.</div>
-                            <div class="review-trip">Cruise - Mediterranean</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Cruise</span>
-                    <span class="review-tag">Mediterranean</span>
-                    <span class="review-tag">Couples</span>
-                </div>
-                <p class="review-body">We'd never been on a cruise before and had no idea where to start. Ariella walked us through all the different cruise lines, helped us pick the right itinerary for our interests, and even secured us a cabin upgrade. She explained everything clearly and was always at the end of the phone when we had questions. The cruise was incredible and we're already looking at doing an Alaska cruise next year - through Ariella, of course!</p>
-                <div class="review-date">June 2024</div>
-            </article>
-
-            <!-- Review 7 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">E</div>
-                        <div>
-                            <div class="review-name">Emma K.</div>
-                            <div class="review-trip">Solo Trip - Bali</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Solo Travel</span>
-                    <span class="review-tag">Bali</span>
-                    <span class="review-tag">Wellness</span>
-                </div>
-                <p class="review-body">This was my first solo trip and I was really nervous about planning it all. Ariella was so reassuring and put together a beautiful 2-week Bali itinerary that included a yoga retreat, rice terrace tours, and beach time in Seminyak. She thought of things I never would have - like travel insurance tips and visa requirements. Having someone so knowledgeable in my corner made all the difference. I felt supported the whole way through. Thank you, Ariella!</p>
-                <div class="review-date">May 2024</div>
-            </article>
-
-            <!-- Review 8 -->
-            <article class="review-card">
-                <div class="review-header">
-                    <div class="review-author-info">
-                        <div class="review-avatar" aria-hidden="true">T</div>
-                        <div>
-                            <div class="review-name">Tom & Lisa</div>
-                            <div class="review-trip">Family Holiday - Disneyland Paris</div>
-                        </div>
-                    </div>
-                    <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                </div>
-                <div class="review-tags">
-                    <span class="review-tag">Family</span>
-                    <span class="review-tag">Theme Park</span>
-                    <span class="review-tag">Europe</span>
-                </div>
-                <p class="review-body">We wanted to surprise the kids with a Disneyland Paris trip and Ariella made the whole thing so easy. She found us a great package with park tickets, hotel stay right on the resort, and Eurostar tickets all bundled together. Saved us money and time compared to booking it all separately. The kids' faces when they found out were priceless. Ariella even sent over some tips on the best rides and how to avoid the queues. Brilliant service from start to finish!</p>
-                <div class="review-date">April 2024</div>
-            </article>
-
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section" aria-labelledby="reviews-cta-heading">
-            <h2 id="reviews-cta-heading">Ready to Create Your Own Story?</h2>
-            <p>Join the growing list of happy travellers. Get in touch for a free, no-obligation quote on your dream holiday.</p>
-            <div class="cta-buttons">
-                <a href="https://ariellamandell.inteletravel.uk" class="btn btn-white" target="_blank" rel="noopener noreferrer">Book Your Escape</a>
-                <a href="https://www.instagram.com/arielle.escapes/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+        <!-- What to Expect -->
+        <section class="expect-section" aria-labelledby="expect-heading">
+            <div class="expect-inner">
+                <div class="expect-header">
+                    <div class="expect-eyebrow">What to Expect</div>
+                    <h2 id="expect-heading">When You Book With Ariella</h2>
+                    <p>Here's what every client gets as standard - no matter the budget or destination.</p>
+                </div>
+
+                <div class="expect-grid" role="list">
+                    <div class="expect-card" role="listitem">
+                        <div class="expect-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                        </div>
+                        <h3>A Real Conversation</h3>
+                        <p>Not a chatbot. Not a generic form. I'll actually talk to you about what you want and listen to what matters.</p>
+                    </div>
+                    <div class="expect-card" role="listitem">
+                        <div class="expect-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <h3>Thorough Research</h3>
+                        <p>I search across every major supplier to find options that fit your budget, preferences, and travel style.</p>
+                    </div>
+                    <div class="expect-card" role="listitem">
+                        <div class="expect-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3>Full Protection</h3>
+                        <p>Every package holiday is ATOL and ABTA protected. Your money and your trip are in safe hands.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="cta-bg">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80"
+                     alt="Mountain landscape at golden hour" loading="lazy">
+            </div>
+            <div class="cta-overlay" aria-hidden="true"></div>
+            <h2 id="cta-heading">Ready to Start Your Own Story?</h2>
+            <p>Get in touch for a free quote. No pressure, no obligation - just a friendly chat about where you want to escape to.</p>
+            <div class="cta-btns">
+                <a href="https://ariellamandell.inteletravel.uk" class="btn btn-white" target="_blank" rel="noopener noreferrer">Book Online</a>
+                <a href="https://www.instagram.com/ariella.escapes/" class="btn btn-glass" target="_blank" rel="noopener noreferrer">Message on Instagram</a>
             </div>
         </section>
 
@@ -874,52 +503,41 @@
     <footer class="footer" role="contentinfo">
         <div class="footer-inner">
             <div class="footer-brand">Ariella <span>Escapes</span></div>
-            <p class="footer-desc">Your independent travel agent. Free personal service with full ATOL & ABTA protection on every booking.</p>
+            <p class="footer-desc">Your independent travel agent. Free personal service with full ATOL & ABTA protection.</p>
             <div class="footer-links-row">
                 <a href="ariella.html">Home</a>
                 <a href="ariella.html#services">Services</a>
                 <a href="ariella.html#about">About</a>
                 <a href="reviews.html">Reviews</a>
                 <a href="https://ariellamandell.inteletravel.uk" target="_blank" rel="noopener noreferrer">Book Online</a>
-                <a href="https://www.instagram.com/arielle.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://www.instagram.com/ariella.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Ariella Escapes. All rights reserved.</p>
                 <div class="footer-protection">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     ATOL & ABTA Protected
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Mobile navigation toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-links');
-
+        var navToggle = document.querySelector('.nav-toggle');
+        var navMenu = document.querySelector('.nav-links');
         navToggle.addEventListener('click', function() {
-            const isOpen = navMenu.classList.toggle('open');
+            var isOpen = navMenu.classList.toggle('open');
             navToggle.setAttribute('aria-expanded', isOpen);
         });
-
         navMenu.querySelectorAll('a').forEach(function(link) {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('open');
                 navToggle.setAttribute('aria-expanded', 'false');
             });
         });
-
-        var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 10) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
         });
-
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && navMenu.classList.contains('open')) {
                 navMenu.classList.remove('open');
@@ -928,6 +546,5 @@
             }
         });
     </script>
-
 </body>
 </html>
