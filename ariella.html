@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ariella Escapes - Your personal, independent travel agent. Hotels, adventures, package deals, cruises and more. ATOL & ABTA protected. Free service, no hidden fees.">
+    <title>Ariella Escapes | Your Personal Travel Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a6b5a;
+            --color-primary-dark: #145548;
+            --color-primary-light: #e8f3f0;
+            --color-warm: #c97b4b;
+            --color-warm-dark: #a8623a;
+            --color-warm-light: #faf0e8;
+            --color-gold: #b8965a;
+            --color-bg: #faf8f5;
+            --color-bg-warm: #f5f0ea;
+            --color-bg-white: #ffffff;
+            --color-text: #1c1c28;
+            --color-text-mid: #444455;
+            --color-text-light: #6b6b7b;
+            --color-text-muted: #999;
+            --color-border: #e6e1da;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --shadow-xs: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 50px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --max-width: 1160px;
+            --transition: 0.3s ease;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img { max-width: 100%; height: auto; display: block; }
+
+        a { color: var(--color-primary); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--color-primary-dark); }
+
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute; top: -100%; left: 1rem;
+            background: var(--color-primary); color: #fff;
+            padding: 0.75rem 1.5rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            z-index: 10000; font-weight: 600;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+
+        .nav-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center; height: 70px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display); font-size: 1.45rem;
+            color: var(--color-text); font-weight: 700; letter-spacing: -0.01em;
+        }
+        .nav-logo span { color: var(--color-primary); font-style: italic; font-weight: 500; }
+
+        .nav-links { display: flex; list-style: none; gap: 1.75rem; align-items: center; }
+
+        .nav-links a {
+            color: var(--color-text-mid); font-size: 0.9rem; font-weight: 500;
+            padding: 0.4rem 0; position: relative; letter-spacing: 0.01em;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 2px; background: var(--color-primary);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { width: 100%; }
+        .nav-links a:hover { color: var(--color-text); }
+
+        .nav-cta {
+            background: var(--color-primary) !important; color: #fff !important;
+            padding: 0.55rem 1.3rem !important; border-radius: 50px;
+            font-weight: 600 !important; font-size: 0.85rem !important;
+            letter-spacing: 0.02em;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--color-primary-dark) !important; color: #fff !important; }
+
+        .nav-toggle {
+            display: none; background: none; border: none;
+            cursor: pointer; padding: 0.5rem; color: var(--color-text);
+        }
+        .nav-toggle svg { width: 26px; height: 26px; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; min-height: 100vh; display: flex;
+            align-items: center; justify-content: center; text-align: center;
+            overflow: hidden; padding: 7rem 2rem 5rem;
+        }
+
+        .hero-bg { position: absolute; inset: 0; z-index: -2; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(160deg, rgba(26,107,90,0.65) 0%, rgba(20,85,72,0.45) 35%, rgba(28,28,40,0.55) 100%);
+        }
+
+        .hero-content { max-width: 720px; }
+
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            color: #fff; padding: 0.45rem 1.2rem; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; margin-bottom: 1.75rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.2rem);
+            color: #fff; line-height: 1.12; margin-bottom: 1.25rem; font-weight: 700;
+        }
+        .hero h1 em { font-style: italic; color: var(--color-gold); font-weight: 500; }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300;
+        }
+
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .scroll-hint {
+            position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+            color: rgba(255,255,255,0.6); animation: float 3s ease-in-out infinite;
+        }
+        .scroll-hint svg { width: 28px; height: 28px; }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.85rem 1.9rem; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600; text-decoration: none;
+            transition: all var(--transition); border: 2px solid transparent;
+            cursor: pointer; letter-spacing: 0.01em;
+        }
+        .btn svg { width: 18px; height: 18px; }
+
+        .btn-warm {
+            background: var(--color-warm); color: #fff; border-color: var(--color-warm);
+        }
+        .btn-warm:hover {
+            background: var(--color-warm-dark); border-color: var(--color-warm-dark);
+            color: #fff; transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,123,75,0.35);
+        }
+
+        .btn-glass {
+            background: rgba(255,255,255,0.12); color: #fff;
+            border-color: rgba(255,255,255,0.35); backdrop-filter: blur(6px);
+        }
+        .btn-glass:hover {
+            background: rgba(255,255,255,0.22); border-color: #fff;
+            color: #fff; transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--color-primary); color: #fff; border-color: var(--color-primary);
+        }
+        .btn-primary:hover {
+            background: var(--color-primary-dark); border-color: var(--color-primary-dark);
+            color: #fff; transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26,107,90,0.3);
+        }
+
+        .btn-outline-dark {
+            background: transparent; color: var(--color-text);
+            border-color: var(--color-border);
+        }
+        .btn-outline-dark:hover {
+            border-color: var(--color-primary); color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: #fff; color: var(--color-warm); border-color: #fff;
+        }
+        .btn-white:hover {
+            background: rgba(255,255,255,0.92); color: var(--color-warm-dark);
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.25);
+        }
+
+        /* ── TRUST BAR ── */
+        .trust-bar {
+            background: var(--color-bg-white); border-bottom: 1px solid var(--color-border);
+            padding: 1.25rem 2rem;
+        }
+        .trust-bar-inner {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; justify-content: center; align-items: center;
+            gap: 2.5rem; flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--color-text-light); font-size: 0.82rem; font-weight: 600;
+            letter-spacing: 0.03em; text-transform: uppercase;
+        }
+        .trust-item svg { width: 18px; height: 18px; color: var(--color-primary); flex-shrink: 0; }
+
+        /* ── SECTIONS ── */
+        .section { padding: 6rem 2rem; }
+        .section-inner { max-width: var(--max-width); margin: 0 auto; }
+
+        .section-header { text-align: center; max-width: 620px; margin: 0 auto 3.5rem; }
+        .section-eyebrow {
+            display: inline-block; color: var(--color-primary); font-size: 0.75rem;
+            font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.6rem);
+            color: var(--color-text); line-height: 1.2; margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem; color: var(--color-text-light); line-height: 1.75; font-weight: 400;
+        }
+
+        /* ── MEET ARIELLA (Brand Section) ── */
+        .brand-section { background: var(--color-bg-white); }
+
+        .brand-grid {
+            display: grid; grid-template-columns: 5fr 6fr; gap: 4.5rem; align-items: center;
+        }
+
+        .brand-image-wrapper {
+            position: relative;
+        }
+        .brand-image {
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-lg); aspect-ratio: 4/5;
+        }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-image-accent {
+            position: absolute; bottom: -16px; right: -16px;
+            width: 140px; height: 140px; border-radius: var(--radius);
+            background: var(--color-primary-light); z-index: -1;
+        }
+
+        .brand-content .section-eyebrow { text-align: left; }
+
+        .brand-content h2 {
+            font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+            color: var(--color-text); margin-bottom: 1.5rem; line-height: 1.2;
+        }
+        .brand-content h2 em {
+            color: var(--color-primary); font-style: italic; font-weight: 500;
+        }
+
+        .brand-content p {
+            font-size: 1rem; color: var(--color-text-mid); margin-bottom: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .brand-values {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-top: 2rem;
+        }
+        .brand-value {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            font-weight: 500; color: var(--color-text); font-size: 0.9rem;
+        }
+        .brand-value svg {
+            width: 18px; height: 18px; color: var(--color-primary);
+            flex-shrink: 0; margin-top: 2px;
+        }
+
+        .brand-ig-link {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            margin-top: 2rem; padding: 0.65rem 1.4rem;
+            background: var(--color-bg); border-radius: 50px;
+            color: var(--color-text-mid); font-size: 0.88rem; font-weight: 600;
+            border: 1px solid var(--color-border); transition: all var(--transition);
+        }
+        .brand-ig-link svg { width: 20px; height: 20px; }
+        .brand-ig-link:hover {
+            border-color: var(--color-primary); color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        /* ── SERVICES ── */
+        .services { background: var(--color-bg); }
+
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+        }
+
+        .service-card {
+            background: var(--color-bg-white); border-radius: var(--radius);
+            padding: 2.25rem 1.75rem; border: 1px solid var(--color-border);
+            transition: all var(--transition); position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--color-primary);
+            transform: scaleX(0); transition: transform var(--transition);
+            transform-origin: left;
+        }
+        .service-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 50px; height: 50px; background: var(--color-primary-light);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 1.25rem; color: var(--color-primary);
+        }
+        .service-icon svg { width: 24px; height: 24px; }
+
+        .service-card h3 {
+            font-family: var(--font-display); font-size: 1.2rem;
+            color: var(--color-text); margin-bottom: 0.6rem;
+        }
+        .service-card p {
+            color: var(--color-text-light); font-size: 0.9rem; line-height: 1.7;
+        }
+
+        /* ── DESTINATIONS ── */
+        .destinations { background: var(--color-bg-white); }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        .destinations-grid .destination-card:first-child {
+            grid-row: 1 / 3; grid-column: 1 / 2;
+        }
+        .destinations-grid .destination-card:nth-child(4) {
+            grid-row: 1 / 3; grid-column: 4 / 5;
+        }
+
+        .destination-card {
+            position: relative; border-radius: var(--radius);
+            overflow: hidden; min-height: 220px; cursor: pointer;
+        }
+        .destination-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .destination-card:hover img { transform: scale(1.06); }
+
+        .dest-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 55%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 1.25rem;
+        }
+        .destination-card h3 {
+            color: #fff; font-family: var(--font-display);
+            font-size: 1.25rem; margin-bottom: 0.15rem;
+        }
+        .destination-card p { color: rgba(255,255,255,0.8); font-size: 0.82rem; }
+
+        /* ── WHY ARIELLA ── */
+        .why-section {
+            background: var(--color-primary);
+            color: #fff;
+        }
+        .why-section .section-eyebrow { color: var(--color-gold); }
+        .why-section .section-title { color: #fff; }
+        .why-section .section-subtitle { color: rgba(255,255,255,0.75); }
+
+        .why-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        .why-card { text-align: center; padding: 1.5rem 1rem; }
+        .why-icon {
+            width: 64px; height: 64px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 1.25rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .why-icon svg { width: 28px; height: 28px; color: var(--color-gold); }
+        .why-card h3 {
+            font-family: var(--font-display); font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+        .why-card p { color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.7; }
+
+        /* ── HOW IT WORKS ── */
+        .process { background: var(--color-bg); }
+
+        .process-track {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+            position: relative;
+        }
+        .process-track::before {
+            content: ''; position: absolute; top: 28px;
+            left: 12.5%; right: 12.5%; height: 2px;
+            background: var(--color-border);
+        }
+
+        .process-step { text-align: center; position: relative; padding: 0 1rem; }
+        .process-num {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: var(--color-bg-white); border: 2px solid var(--color-primary);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem; font-family: var(--font-display);
+            font-size: 1.3rem; font-weight: 700; color: var(--color-primary);
+            position: relative; z-index: 1;
+        }
+        .process-step h3 {
+            font-family: var(--font-display); font-size: 1.1rem;
+            color: var(--color-text); margin-bottom: 0.5rem;
+        }
+        .process-step p { color: var(--color-text-light); font-size: 0.88rem; line-height: 1.65; }
+
+        /* ── INSTAGRAM / SOCIAL PROOF ── */
+        .ig-section { background: var(--color-bg-white); }
+
+        .ig-header {
+            text-align: center; margin-bottom: 2.5rem;
+        }
+        .ig-handle {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            font-family: var(--font-display); font-size: 1.3rem;
+            color: var(--color-text); margin-bottom: 0.5rem;
+        }
+        .ig-handle svg { width: 28px; height: 28px; color: var(--color-warm); }
+        .ig-tagline { color: var(--color-text-light); font-size: 0.95rem; }
+
+        .ig-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+        }
+        .ig-card {
+            border-radius: var(--radius-sm); overflow: hidden;
+            aspect-ratio: 1; position: relative;
+        }
+        .ig-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .ig-card:hover img { transform: scale(1.05); }
+        .ig-card-overlay {
+            position: absolute; inset: 0;
+            background: rgba(26,107,90,0.6); opacity: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity var(--transition);
+        }
+        .ig-card:hover .ig-card-overlay { opacity: 1; }
+        .ig-card-overlay svg { width: 32px; height: 32px; color: #fff; }
+
+        .ig-follow {
+            text-align: center; margin-top: 2.5rem;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            position: relative; padding: 6rem 2rem; text-align: center;
+            color: #fff; overflow: hidden;
+        }
+        .cta-bg { position: absolute; inset: 0; z-index: -2; }
+        .cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+        .cta-overlay {
+            position: absolute; inset: 0; z-index: -1;
+            background: linear-gradient(135deg, rgba(201,123,75,0.85) 0%, rgba(168,98,58,0.9) 100%);
+        }
+        .cta-section h2 {
+            font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            font-size: 1.1rem; color: rgba(255,255,255,0.9);
+            margin-bottom: 2.25rem; max-width: 520px; margin-left: auto; margin-right: auto;
+            font-weight: 300;
+        }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: #1c1c28; color: rgba(255,255,255,0.65); padding: 4rem 2rem 2rem;
+        }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; }
+
+        .footer-grid {
+            display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr;
+            gap: 3rem; margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display); font-size: 1.4rem; color: #fff;
+            margin-bottom: 0.75rem;
+        }
+        .footer-brand span { color: var(--color-primary); font-style: italic; font-weight: 500; }
+        .footer-desc { font-size: 0.88rem; line-height: 1.75; margin-bottom: 1.5rem; }
+
+        .social-links { display: flex; gap: 0.75rem; }
+        .social-link {
+            width: 38px; height: 38px; background: rgba(255,255,255,0.08);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: rgba(255,255,255,0.6);
+            transition: all var(--transition);
+        }
+        .social-link:hover { background: var(--color-primary); color: #fff; }
+        .social-link svg { width: 18px; height: 18px; }
+
+        .footer h4 { color: #fff; font-size: 0.85rem; margin-bottom: 1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.55rem; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+        .footer-links a:hover { color: #fff; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem; font-size: 0.8rem;
+        }
+        .footer-protection { display: flex; align-items: center; gap: 0.5rem; }
+        .footer-protection svg { width: 15px; height: 15px; color: var(--color-gold); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .destinations-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .destinations-grid .destination-card:first-child,
+            .destinations-grid .destination-card:nth-child(4) {
+                grid-row: auto; grid-column: auto;
+            }
+            .destination-card { min-height: 260px; }
+            .why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .ig-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 70px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+                flex-direction: column; padding: 1rem 2rem;
+                border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-md);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li { border-bottom: 1px solid var(--color-border); }
+            .nav-links li:last-child { border-bottom: none; margin-top: 0.5rem; }
+            .nav-links a { display: block; padding: 0.85rem 0; }
+
+            .brand-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .brand-image { aspect-ratio: 16/10; }
+            .brand-image-accent { display: none; }
+            .brand-values { grid-template-columns: 1fr; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .section { padding: 4rem 1.25rem; }
+
+            .process-track { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .process-track::before { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 6rem 1.25rem 3.5rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; max-width: 300px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .destinations-grid { grid-template-columns: 1fr; }
+            .destination-card { min-height: 300px; }
+            .ig-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .process-track { grid-template-columns: 1fr; }
+            .cta-btns { flex-direction: column; align-items: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
+            }
+            .destination-card:hover img, .ig-card:hover img { transform: none; }
+        }
+
+        @media (forced-colors: active) {
+            .btn { border: 2px solid ButtonText; }
+            .service-card { border: 1px solid ButtonText; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Nav -->
+    <header>
+        <nav class="nav" id="navbar" aria-label="Main navigation">
+            <div class="nav-inner">
+                <a href="ariella.html" class="nav-logo" aria-label="Ariella Escapes - Home">
+                    Ariella <span>Escapes</span>
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <ul class="nav-links" id="nav-menu" role="list">
+                    <li><a href="ariella.html" aria-current="page">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About Ariella</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="https://ariellamandell.inteletravel.uk" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- Hero -->
+        <section class="hero" aria-label="Welcome">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1920&q=80"
+                     alt="Crystal clear ocean water with sunlight shimmering across the surface"
+                     loading="eager" fetchpriority="high">
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">Your Personal Travel Agent</div>
+                <h1>Travel Made Personal.<br><em>Memories Made Forever.</em></h1>
+                <p class="hero-sub">
+                    I'm Ariella - I plan holidays you'll never stop talking about.
+                    No comparison sites, no stress, no fees. Just you, me, and your dream destination.
+                </p>
+                <div class="hero-btns">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-warm" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        Start Planning
+                    </a>
+                    <a href="#about" class="btn btn-glass">Meet Ariella</a>
+                </div>
+            </div>
+            <div class="scroll-hint" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </div>
+        </section>
+
+        <!-- Trust -->
+        <div class="trust-bar" role="region" aria-label="Trust and protection">
+            <div class="trust-bar-inner">
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ATOL Protected
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ABTA Member
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    100% Free Service
+                </div>
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    Personal Touch
+                </div>
+            </div>
+        </div>
+
+        <!-- Meet Ariella -->
+        <section class="section brand-section" id="about" aria-labelledby="about-heading">
+            <div class="section-inner">
+                <div class="brand-grid">
+                    <div class="brand-image-wrapper">
+                        <div class="brand-image">
+                            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80"
+                                 alt="Travel planning with a passport, map and camera laid out on a table"
+                                 loading="lazy">
+                        </div>
+                        <div class="brand-image-accent" aria-hidden="true"></div>
+                    </div>
+                    <div class="brand-content">
+                        <div class="section-eyebrow">The Person Behind the Brand</div>
+                        <h2 id="about-heading">I'm Ariella, and I believe holidays should be <em>effortless</em></h2>
+                        <p>I started Ariella Escapes because I saw too many people spending hours scrolling through comparison sites, second-guessing their choices, and ending up with a holiday that was just... fine. I think you deserve better than fine.</p>
+                        <p>When you book with me, you get a real person who genuinely cares about your trip. I listen. I research. I find options you didn't know existed. And I handle every detail from first enquiry to the moment you get home.</p>
+                        <p>My service costs you nothing - I'm paid by the travel suppliers, not by you. Every booking comes with full ATOL and ABTA financial protection, so your money is safe and your holiday is guaranteed.</p>
+
+                        <div class="brand-values">
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Completely free to use
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Financially protected
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Access to exclusive rates
+                            </div>
+                            <div class="brand-value">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                Here before, during & after
+                            </div>
+                        </div>
+
+                        <a href="https://www.instagram.com/ariella.escapes/" class="brand-ig-link" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                            Follow @ariella.escapes
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section services" id="services" aria-labelledby="services-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">What I Can Book For You</div>
+                    <h2 class="section-title" id="services-heading">Whatever You're Dreaming Of</h2>
+                    <p class="section-subtitle">I have access to every major travel supplier in the world - from big-name resorts to hidden gems. If it involves travel, I can sort it.</p>
+                </div>
+                <div class="services-grid" role="list">
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3>Package Holidays</h3>
+                        <p>All-inclusive, half-board, self-catering - for couples, families, and groups. ATOL protected and often cheaper than booking direct.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <h3>Hotels & Resorts</h3>
+                        <p>From boutique hideaways to five-star luxury. I can access rates and room upgrades you won't find on comparison sites.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h3>Adventures & Tours</h3>
+                        <p>Safaris, treks, food tours, cultural excursions - whatever lights you up. I'll find experiences that go beyond the guidebook.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <h3>Cruises</h3>
+                        <p>Ocean, river, or expedition - every major cruise line at your fingertips. I'll match you to the perfect ship and itinerary.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                        </div>
+                        <h3>Flights</h3>
+                        <p>Economy to first class, worldwide. I'll find the best routes, prices, and connections so you can travel smarter.</p>
+                    </div>
+                    <div class="service-card" role="listitem">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <h3>Bespoke Trips</h3>
+                        <p>Honeymoons, weddings abroad, milestone birthdays, group trips - tell me the occasion and I'll create something unforgettable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Destinations -->
+        <section class="section destinations" id="destinations" aria-labelledby="dest-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">Inspiration</div>
+                    <h2 class="section-title" id="dest-heading">Where Will You Escape To?</h2>
+                    <p class="section-subtitle">These are just a taste. I can book anywhere in the world - just ask.</p>
+                </div>
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600&q=80"
+                             alt="Overwater bungalows in the Maldives with crystal clear water"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Maldives</h3><p>Overwater luxury</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80"
+                             alt="White and blue buildings of Santorini Greece overlooking the sea"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Greece</h3><p>Island hopping</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=600&q=80"
+                             alt="Tropical beach with palm trees and turquoise water"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Caribbean</h3><p>All-inclusive paradise</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&w=600&q=80"
+                             alt="Dramatic mountainous coastline of Southeast Asia"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Southeast Asia</h3><p>Adventure awaits</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80"
+                             alt="Dubai skyline at sunset with modern skyscrapers"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Dubai</h3><p>City & sun</p></div>
+                    </div>
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=600&q=80"
+                             alt="Golden sunset over a Turkish resort with pools and palm trees"
+                             loading="lazy">
+                        <div class="dest-overlay"><h3>Turkey</h3><p>Family favourites</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Ariella -->
+        <section class="section why-section" aria-labelledby="why-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">Why Book With Me</div>
+                    <h2 class="section-title" id="why-heading">What Makes Ariella Escapes Different</h2>
+                    <p class="section-subtitle">You could book online. But here's why people choose not to.</p>
+                </div>
+                <div class="why-grid" role="list">
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                        </div>
+                        <h3>A Real Person, Not a Search Engine</h3>
+                        <p>You message me, I reply. No chatbots, no call centres, no waiting on hold. Just honest, human advice from someone who genuinely wants your trip to be incredible.</p>
+                    </div>
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3>It Won't Cost You a Penny</h3>
+                        <p>My service is completely free. I earn commission from the travel suppliers - the same price you'd pay online, often less, always with better support.</p>
+                    </div>
+                    <div class="why-card" role="listitem">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <h3>Your Money Is Protected</h3>
+                        <p>Every package holiday I book is ATOL protected and backed by ABTA. If anything goes wrong, you're covered - that's something booking direct often can't guarantee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section process" aria-labelledby="process-heading">
+            <div class="section-inner">
+                <div class="section-header">
+                    <div class="section-eyebrow">How It Works</div>
+                    <h2 class="section-title" id="process-heading">Four Steps to Your Dream Holiday</h2>
+                    <p class="section-subtitle">It's as simple as sending a message. I handle everything else.</p>
+                </div>
+                <div class="process-track" role="list">
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">1</div>
+                        <h3>Get in Touch</h3>
+                        <p>Send me a message on Instagram or through my booking site. Tell me where you fancy, when, and your budget.</p>
+                    </div>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">2</div>
+                        <h3>I Do the Legwork</h3>
+                        <p>I search thousands of options across every major supplier to find the best fit at the best price.</p>
+                    </div>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">3</div>
+                        <h3>You Choose</h3>
+                        <p>I present my top picks. You choose the one that feels right. No pressure, no rush.</p>
+                    </div>
+                    <div class="process-step" role="listitem">
+                        <div class="process-num" aria-hidden="true">4</div>
+                        <h3>Escape & Enjoy</h3>
+                        <p>I handle all the bookings and details. You just pack your bags and go.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram Section -->
+        <section class="section ig-section" aria-labelledby="ig-heading">
+            <div class="section-inner">
+                <div class="ig-header">
+                    <div class="ig-handle" id="ig-heading">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        @ariella.escapes
+                    </div>
+                    <p class="ig-tagline">Follow along for travel inspiration, deals, and destination tips</p>
+                </div>
+                <div class="ig-grid">
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - beach sunset">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Tropical beach at sunset with golden sky" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - infinity pool">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=400&q=80" alt="Luxury resort infinity pool with ocean view" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - mountain lake">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=400&q=80" alt="Serene mountain lake surrounded by forest" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="ig-card" target="_blank" rel="noopener noreferrer" aria-label="View on Instagram - Santorini">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=400&q=80" alt="Santorini blue domed church with sea view" loading="lazy">
+                        <div class="ig-card-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+                    </a>
+                </div>
+                <div class="ig-follow">
+                    <a href="https://www.instagram.com/ariella.escapes/" class="btn btn-outline-dark" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        Follow @ariella.escapes
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" aria-labelledby="cta-heading">
+            <div class="cta-bg">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1920&q=80"
+                     alt="Dramatic mountain landscape at golden hour" loading="lazy">
+            </div>
+            <div class="cta-overlay" aria-hidden="true"></div>
+            <div class="section-inner">
+                <h2 id="cta-heading">Let's Plan Your Next Escape</h2>
+                <p>Send me a message and let's get started. No commitment, no fees - just a friendly chat about where you want to go.</p>
+                <div class="cta-btns">
+                    <a href="https://ariellamandell.inteletravel.uk" class="btn btn-white" target="_blank" rel="noopener noreferrer">Book Online</a>
+                    <a href="https://www.instagram.com/ariella.escapes/" class="btn btn-glass" target="_blank" rel="noopener noreferrer">Message on Instagram</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Ariella <span>Escapes</span></div>
+                    <p class="footer-desc">Your independent travel agent. Personal service, expert knowledge, and full financial protection on every booking. It's free - so why wouldn't you?</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/ariella.escapes/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow Ariella Escapes on Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Explore</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="ariella.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About Ariella</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>I Can Book</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="#services">Package Holidays</a></li>
+                        <li><a href="#services">Hotels & Resorts</a></li>
+                        <li><a href="#services">Cruises</a></li>
+                        <li><a href="#services">Flights & More</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Get Started</h4>
+                    <ul class="footer-links" role="list">
+                        <li><a href="reviews.html">Client Reviews</a></li>
+                        <li><a href="https://ariellamandell.inteletravel.uk" target="_blank" rel="noopener noreferrer">Book Online</a></li>
+                        <li><a href="https://www.instagram.com/ariella.escapes/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ariella Escapes. All rights reserved.</p>
+                <div class="footer-protection">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    ATOL & ABTA Protected
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var navToggle = document.querySelector('.nav-toggle');
+        var navMenu = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', function() {
+            var isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+        window.addEventListener('scroll', function() {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.focus();
+            }
+        });
+    </script>
+</body>
+</html>
